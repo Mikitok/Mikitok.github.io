@@ -1,0 +1,719 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="机器学习,《统计学习方法》," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mikito" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="&amp;emsp;&amp;emsp;相似度查询有两种方法：&amp;emsp;1. 范围查询，给定阈值。&amp;emsp;2. k近邻查询，给定查询点和k。&amp;emsp;&amp;emsp;k近邻法是一种基本分类与回归的方法。其基本思想是：一个样本的k个最相近的样本大多属于某一个类，则该样本也属于这个类。因此，k近邻算法不具有显式的学习过程。k值的选择、距离度量和分类决策规则是k近邻方法的三个基本要素。 k近邻算法 k近邻算法流程输">
+<meta name="keywords" content="机器学习,《统计学习方法》">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《统计学习方法》之k近邻法">
+<meta property="og:url" content="http://115.159.44.202/2017/10/22/机器学习/统计学习方法/《统计学习方法》之k近邻法/index.html">
+<meta property="og:site_name" content="Mikito">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;相似度查询有两种方法：&amp;emsp;1. 范围查询，给定阈值。&amp;emsp;2. k近邻查询，给定查询点和k。&amp;emsp;&amp;emsp;k近邻法是一种基本分类与回归的方法。其基本思想是：一个样本的k个最相近的样本大多属于某一个类，则该样本也属于这个类。因此，k近邻算法不具有显式的学习过程。k值的选择、距离度量和分类决策规则是k近邻方法的三个基本要素。 k近邻算法 k近邻算法流程输">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-11-04T12:07:46.131Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《统计学习方法》之k近邻法">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;相似度查询有两种方法：&amp;emsp;1. 范围查询，给定阈值。&amp;emsp;2. k近邻查询，给定查询点和k。&amp;emsp;&amp;emsp;k近邻法是一种基本分类与回归的方法。其基本思想是：一个样本的k个最相近的样本大多属于某一个类，则该样本也属于这个类。因此，k近邻算法不具有显式的学习过程。k值的选择、距离度量和分类决策规则是k近邻方法的三个基本要素。 k近邻算法 k近邻算法流程输">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://115.159.44.202/2017/10/22/机器学习/统计学习方法/《统计学习方法》之k近邻法/"/>
+
+
+
+
+
+  <title> 《统计学习方法》之k近邻法 | Mikito </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mikito</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://115.159.44.202/2017/10/22/机器学习/统计学习方法/《统计学习方法》之k近邻法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mikito">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mikito">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                《统计学习方法》之k近邻法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-22T14:10:18+08:00">
+                2017-10-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/《统计学习方法》/" itemprop="url" rel="index">
+                    <span itemprop="name">《统计学习方法》</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&emsp;&emsp;相似度查询有两种方法：<br>&emsp;1. 范围查询，给定阈值。<br>&emsp;2. k近邻查询，给定查询点和k。<br>&emsp;&emsp;k近邻法是一种基本分类与回归的方法。其基本思想是：一个样本的k个最相近的样本大多属于某一个类，则该样本也属于这个类。因此，k近邻算法不具有显式的学习过程。k值的选择、距离度量和分类决策规则是k近邻方法的三个基本要素。</p>
+<h2 id="k近邻算法"><a href="#k近邻算法" class="headerlink" title="k近邻算法"></a>k近邻算法</h2><blockquote>
+<p>k近邻算法流程<br>输入：训练数据集$T={(x_1,y_1),(x_2,y_2),…,(x_N,y_N)}$，其中，$x \in X \subseteq R^n$为实例的特征向量，$y_i\in Y={c_1,c_2,…,c_K}$为实例的类别，$i=1,2,…,N$，实例特征向量$x$。<br>输出：实例$x$所属的类$y$。<br>(1) 根据给定的距离度量，在训练集$T$中找出与$x$最近的$k$个点，涵盖这$k$个点的$x$邻域记作$N_k(x)$。<br>(2) 在$N_k(x)$中根据分类决策规则，决定$x$的类别$y$：<br>$y=\arg \max \limits_{c_j}{\sum \limits_{x_i\in N_k(x)}I(y_i=c_j)}, i=1,2,…,N; j=1,2,…,K $<br>其中$I$为指示函数，即当$y_i=c_j$时，$I$为1，否则为0。</p>
+</blockquote>
+<p>&emsp;&emsp;k近邻的特殊情况是当$k=1$时，此算法被称为最近邻算法。</p>
+<h2 id="k近邻模型"><a href="#k近邻模型" class="headerlink" title="k近邻模型"></a>k近邻模型</h2><h3 id="模型"><a href="#模型" class="headerlink" title="模型"></a>模型</h3><p>&emsp;&emsp;特征空间中，对于每个训练实例点$x_i$，距离该点比其他店更近的所有点组成的一个区域，叫做单元。k近邻算法就是利用训练数据集对特征向量空间进行划分。</p>
+<h3 id="距离度量"><a href="#距离度量" class="headerlink" title="距离度量"></a>距离度量</h3><p>&emsp;&emsp;距离度量公式定义为：<br>$$L_p(x_i,x_j)=(\sum_{l=1}^{n}|x_i^{(l)}-x_i^{(l)}|^p)^\frac{1}{p}$$<br>其中$p\geq 1$<br>&emsp;&emsp;当$p=1$时，可以得到曼哈顿距离：$L_1(x_i,x_j)=\sum_{l=1}^{n}|x_i^{(l)}-x_i^{(l)}|$<br>&emsp;&emsp;当$p=2$时，可以得到欧式距离：$L_2(x_i,x_j)=(\sum_{l=1}^{n}|x_i^{(l)}-x_i^{(l)}|^2)^\frac{1}{2}$</p>
+<h3 id="k值的选择"><a href="#k值的选择" class="headerlink" title="k值的选择"></a>k值的选择</h3><p>&emsp;&emsp;k值的选择对算法有很大的影响。k值的减小意味着整体模型变得复杂，容易发生过拟合。如果选择较大的k值，可以减少学习的估计误差，但是学习的近似误差会增加。在应用中，k值一般取一个比较小的值。通常采用交叉验证法来选取最合适的k值。</p>
+<h3 id="分类决策规则"><a href="#分类决策规则" class="headerlink" title="分类决策规则"></a>分类决策规则</h3><p>&emsp;&emsp;k近邻法中的分类决策规则往往是多数表决，即由输入实例的k个近邻的训练实例中的多数类决定输入实例的类。这种决策规则等价于经验风险最小化。</p>
+<h2 id="k近邻法的实现：kd树"><a href="#k近邻法的实现：kd树" class="headerlink" title="k近邻法的实现：kd树"></a>k近邻法的实现：kd树</h2><p>&emsp;&emsp;我们在进行特征匹配是，通常采用两种方法：线性扫描和构建数据索引，而使用构建数据索引时，在无重叠时可采用kd树，重叠时可采用R树。<br>&emsp;&emsp;kd树的全称是k-dimension tree，可以用于k近邻的寻找。</p>
+<h3 id="构造kd树"><a href="#构造kd树" class="headerlink" title="构造kd树"></a>构造kd树</h3><p>&emsp;&emsp;kd树是一棵二叉树，也是一颗空间划分树（空间划分树：将整个空间划分为几个特定的部分，然后再特定的部分进行搜索）。</p>
+<blockquote>
+<p>构造平衡kd树流程<br>输入：$k$维空间数据集$T={x_1,x_2,…,x_N}$，其中$x_i=(x_i^{(1)},x_i^{(2)},…,x_i^{(k)})^T，i=1,2,…,N$<br>输出：kd树<br>算法流程：<br>(1) 开始：构造根结点，根结点对应于包含$T$的$k$维空间的超矩形区域。<br>&emsp;选择$x^{(1)}$为坐标轴，将$T$中所有实例的$x^{(1)}$的中位数（奇数个：取中间，偶数个：中间偏大）为切分点，将根结点对应的超矩形区域切分成两个子区域。左子结点对应于小于切分点的子区域，有子结点对应于大于切分点的子区域。落在切分超平面上的实例点保存在根节点。<br>(2) 重复：对深度为$j$的切分点，选择$x^{(l)}$为切分的坐标轴，其中$l=j(modk)+1$（从1到$k$循环取），重复以上操作。<br>(3) 直到两个子区域没有实例点存在时停止。从而形成kd树的区域划分。</p>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+            <a href="/tags/《统计学习方法》/" rel="tag"># 《统计学习方法》</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/18/论文阅读/人脸识别/《Extended local binary patterns for face recognition》阅读笔记/" rel="next" title="《Extended local binary patterns for face recognition》阅读笔记">
+                <i class="fa fa-chevron-left"></i> 《Extended local binary patterns for face recognition》阅读笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/31/机器学习/多数投票分类器/" rel="prev" title="考虑平局的投票分类器">
+                考虑平局的投票分类器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Mikito" />
+          <p class="site-author-name" itemprop="name">Mikito</p>
+           
+              <p class="site-description motion-element" itemprop="description">Computer Science</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#k近邻算法"><span class="nav-number">1.</span> <span class="nav-text">k近邻算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#k近邻模型"><span class="nav-number">2.</span> <span class="nav-text">k近邻模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#模型"><span class="nav-number">2.1.</span> <span class="nav-text">模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#距离度量"><span class="nav-number">2.2.</span> <span class="nav-text">距离度量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#k值的选择"><span class="nav-number">2.3.</span> <span class="nav-text">k值的选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分类决策规则"><span class="nav-number">2.4.</span> <span class="nav-text">分类决策规则</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#k近邻法的实现：kd树"><span class="nav-number">3.</span> <span class="nav-text">k近邻法的实现：kd树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#构造kd树"><span class="nav-number">3.1.</span> <span class="nav-text">构造kd树</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mikito</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

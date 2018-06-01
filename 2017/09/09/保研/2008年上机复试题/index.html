@@ -1,0 +1,705 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="C语言," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mikito" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="2008年上机复试题题目（1）用IE从FTP上下载org.dat，并保存在D盘的根目录中。（2）此文件中按文本方式存放了一段其他文章，其中有若干长度小于15的英 文单词，单词之间用空格分开，无其他符号。（3）顺序读取这段文章的不同的单词（大小写敏感），同时在读取的过程中排除 所有的单词THE以及变形，即这些单词不能出现在读取的结果中。（4）将读取的所有单词的首字母转大写后，输出D根目录下new.t">
+<meta name="keywords" content="C语言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2008年上机复试题">
+<meta property="og:url" content="http://115.159.44.202/2017/09/09/保研/2008年上机复试题/index.html">
+<meta property="og:site_name" content="Mikito">
+<meta property="og:description" content="2008年上机复试题题目（1）用IE从FTP上下载org.dat，并保存在D盘的根目录中。（2）此文件中按文本方式存放了一段其他文章，其中有若干长度小于15的英 文单词，单词之间用空格分开，无其他符号。（3）顺序读取这段文章的不同的单词（大小写敏感），同时在读取的过程中排除 所有的单词THE以及变形，即这些单词不能出现在读取的结果中。（4）将读取的所有单词的首字母转大写后，输出D根目录下new.t">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-13T04:25:55.214Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2008年上机复试题">
+<meta name="twitter:description" content="2008年上机复试题题目（1）用IE从FTP上下载org.dat，并保存在D盘的根目录中。（2）此文件中按文本方式存放了一段其他文章，其中有若干长度小于15的英 文单词，单词之间用空格分开，无其他符号。（3）顺序读取这段文章的不同的单词（大小写敏感），同时在读取的过程中排除 所有的单词THE以及变形，即这些单词不能出现在读取的结果中。（4）将读取的所有单词的首字母转大写后，输出D根目录下new.t">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://115.159.44.202/2017/09/09/保研/2008年上机复试题/"/>
+
+
+
+
+
+  <title> 2008年上机复试题 | Mikito </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mikito</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://115.159.44.202/2017/09/09/保研/2008年上机复试题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mikito">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mikito">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                2008年上机复试题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-09T18:49:29+08:00">
+                2017-09-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/保研/" itemprop="url" rel="index">
+                    <span itemprop="name">保研</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="2008年上机复试题"><a href="#2008年上机复试题" class="headerlink" title="2008年上机复试题"></a>2008年上机复试题</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>（1）用IE从FTP上下载org.dat，并保存在D盘的根目录中。<br>（2）此文件中按文本方式存放了一段其他文章，其中有若干长度小于15的英 文单词，单词之间用空格分开，无其他符号。<br>（3）顺序读取这段文章的不同的单词（大小写敏感），同时在读取的过程中排除 所有的单词THE以及变形，即这些单词不能出现在读取的结果中。<br>（4）将读取的所有单词的首字母转大写后，输出D根目录下new.txt，每个单词一行。<br>那段文字可以点右键打开方式中用记事本打开，内容是：<br>The constructor is used to initialize the object The destructor is used to delete the Object the calling sequence of constructor is opposite to the calling sequence of destructor<br>运行结果是：<br>Constructor<br>Is<br>Used<br>To<br>Initialize<br>Object<br>Destructor<br>Delete<br>Object<br>Calling<br>Seqence<br>Of<br>Opposite</p>
+<h3 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h3><p>&emsp;&emsp;不知道我为什么看到这样的题目第一个反应就是字典树。因为我的C语言写的十分不熟练，所以这种难一点的对我来说就有了无数的Bug。一般的数组也是可以，思想还简单一点，学长给了代码。好像集合也是可以做，但是考虑到可能只给我们用C（虽然他说C++也是可以的，但是我不信），所以最后还是基本用了C。<br>&emsp;&emsp;用字典树的话这道题分成三个部分：<br>&emsp;&emsp;（1）读单词并建树（丁大佬教育我这两个应该分开）：将读到的单词保存，并将它的小写形式与”the”比较。如果不一样的就加入到字典树中。我额外给了一个scount变量表示这个单词有多少个。<br>&emsp;&emsp;（2）字典树遍历：递归遍历字典树，对所有的单词先转换为小写，然后将首字母转为大写输出。<br>&emsp;&emsp;（3）删除字典树并释放指针：递归删除，有点像后序遍历。<br>&emsp;&emsp;需要注意的是一开始读文章中的字母大小写是敏感的，所以一开始建树的时候只能保存单词的原型。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">struct</span> Trienode</div><div class="line">&#123;</div><div class="line">	<span class="keyword">char</span> sletter;</div><div class="line">	<span class="keyword">int</span> scount;</div><div class="line">	Trienode * child[<span class="number">52</span>]; <span class="comment">// 前26个存放小写，后26个存放大写</span></div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">initNode</span><span class="params">()</span></span>&#123;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">52</span>; i++) &#123;</div><div class="line">			child[i] = <span class="literal">NULL</span>;</div><div class="line">		&#125;</div><div class="line">		scount = <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">treeBuild</span><span class="params">(Trienode * head, FILE *fp)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">treeTraversal</span><span class="params">(Trienode * node, <span class="keyword">char</span> * words, <span class="keyword">int</span> len)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">treeDestroy</span><span class="params">(Trienode * node)</span></span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	FILE * fp = fopen(<span class="string">"org.dat"</span>, <span class="string">"r"</span>);</div><div class="line">	<span class="keyword">if</span> (fp == <span class="literal">NULL</span>) &#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"FILE OPEN ERROR!\n"</span>);</div><div class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">char</span> words[<span class="number">20</span>];</div><div class="line">	Trienode * head= (Trienode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Trienode));</div><div class="line">	head-&gt;initNode();</div><div class="line">	treeBuild(head, fp);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">52</span>; i++) &#123;</div><div class="line">		treeTraversal(head-&gt;child[i], words, <span class="number">0</span>);</div><div class="line">	&#125;</div><div class="line">	treeDestroy(head);</div><div class="line"></div><div class="line">	fclose(fp);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">treeBuild</span><span class="params">(Trienode * head, FILE *fp)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">char</span> temp[<span class="number">20</span>];</div><div class="line">	Trienode * t;</div><div class="line"></div><div class="line">	<span class="keyword">while</span> (<span class="built_in">fscanf</span>(fp, <span class="string">"%s"</span>, temp) != EOF) &#123;</div><div class="line">		t = head;</div><div class="line">		<span class="keyword">int</span> i = <span class="number">0</span>;</div><div class="line">		<span class="keyword">char</span> word[<span class="number">20</span>];</div><div class="line">		<span class="built_in">strcpy</span>(word, temp);</div><div class="line">		_strlwr(temp);</div><div class="line">		<span class="keyword">if</span> (<span class="built_in">strcmp</span>(temp, <span class="string">"the"</span>) != <span class="number">0</span>) &#123;</div><div class="line">			<span class="keyword">while</span> (word[i] != <span class="string">'\0'</span>) &#123;</div><div class="line">				<span class="keyword">if</span> (word[i] &gt;= <span class="string">'a'</span>&amp;&amp; word[i] &lt;= <span class="string">'z'</span>) &#123;</div><div class="line">					<span class="keyword">if</span> (t-&gt;child[word[i] - <span class="string">'a'</span>] == <span class="literal">NULL</span>) &#123;</div><div class="line">						Trienode * n = (Trienode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Trienode));</div><div class="line">						n-&gt;initNode();</div><div class="line">						n-&gt;sletter = word[i];</div><div class="line">						t-&gt;child[word[i] - <span class="string">'a'</span>] = n;</div><div class="line">						t = n;</div><div class="line">					&#125;</div><div class="line">					<span class="keyword">else</span> &#123;</div><div class="line">						t = t-&gt;child[word[i] - <span class="string">'a'</span>];</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">				<span class="keyword">else</span></div><div class="line">				&#123;</div><div class="line">					<span class="keyword">if</span> (t-&gt;child[word[i] - <span class="string">'A'</span> + <span class="number">26</span>] == <span class="literal">NULL</span>) &#123;</div><div class="line">						Trienode * n = (Trienode*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Trienode));</div><div class="line">						n-&gt;initNode();</div><div class="line">						n-&gt;sletter = word[i];</div><div class="line">						t-&gt;child[word[i] - <span class="string">'A'</span> +<span class="number">26</span>] = n;</div><div class="line">						t = n;</div><div class="line">					&#125;</div><div class="line">					<span class="keyword">else</span> &#123;</div><div class="line">						t = t-&gt;child[word[i] - <span class="string">'A'</span> + <span class="number">26</span>];</div><div class="line">					&#125;</div><div class="line">				&#125;</div><div class="line">				i++;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		t-&gt;scount++;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">treeTraversal</span><span class="params">(Trienode * node, <span class="keyword">char</span> * words, <span class="keyword">int</span> len)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (node == <span class="literal">NULL</span>) &#123;</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">	words[len] = node-&gt;sletter;</div><div class="line">	<span class="keyword">if</span> (node-&gt;scount &gt; <span class="number">0</span>) &#123;</div><div class="line">		words[len + <span class="number">1</span>] = <span class="string">'\0'</span>;</div><div class="line">		<span class="keyword">char</span> temp[<span class="number">20</span>];</div><div class="line">		<span class="built_in">strcpy</span>(temp, words);</div><div class="line">		_strlwr(temp);</div><div class="line">		temp[<span class="number">0</span>] = temp[<span class="number">0</span>] + <span class="string">'A'</span> - <span class="string">'a'</span>;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%s\n"</span>, temp);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">52</span>; i++) &#123;</div><div class="line">		<span class="keyword">if</span> (node-&gt;child[i] != <span class="literal">NULL</span>) &#123;</div><div class="line">			treeTraversal(node-&gt;child[i], words, len + <span class="number">1</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	words[len] = <span class="string">'\0'</span>;</div><div class="line">&#125;</div><div class="line"><span class="comment">//  删除树</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">treeDestroy</span><span class="params">(Trienode * node)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">if</span> (node == <span class="literal">NULL</span>) &#123;</div><div class="line">		<span class="keyword">return</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">52</span>; i++) &#123;</div><div class="line">		treeDestroy(node-&gt;child[i]);</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">free</span>(node);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C语言/" rel="tag"># C语言</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/08/保研/2005-2007上机复试题/" rel="next" title="2005-2007上机复试题">
+                <i class="fa fa-chevron-left"></i> 2005-2007上机复试题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/10/保研/2009-2011年上机复试题/" rel="prev" title="2009-2011年上机复试题">
+                2009-2011年上机复试题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Mikito" />
+          <p class="site-author-name" itemprop="name">Mikito</p>
+           
+              <p class="site-description motion-element" itemprop="description">Computer Science</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2008年上机复试题"><span class="nav-number">1.</span> <span class="nav-text">2008年上机复试题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-number">1.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目分析"><span class="nav-number">1.2.</span> <span class="nav-text">题目分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mikito</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

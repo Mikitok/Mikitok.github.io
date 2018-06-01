@@ -1,0 +1,816 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="matlab,机器学习,Coursera," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mikito" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="&amp;emsp;&amp;emsp;一直有想看Andrew Ng的机器学习课程，但是拖了很久都没有看完。之前也写过一些相关的博客，但是在博客搬家的时候没有保存下来。&amp;emsp;&amp;emsp;第一周和第二周的内容比较少，作业也是在一起布置的。 WEEK 1IntroductionWhat is machine learning? 机器学习的定义：为了完成某个目标T，从经验E中学习，同时具有一定的判断标准P。  S">
+<meta name="keywords" content="matlab,机器学习,Coursera">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Machine Learning 第一周和第二周">
+<meta property="og:url" content="http://115.159.44.202/2017/10/16/机器学习/Andrew/Machine Learning 第一周和第二周/index.html">
+<meta property="og:site_name" content="Mikito">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;一直有想看Andrew Ng的机器学习课程，但是拖了很久都没有看完。之前也写过一些相关的博客，但是在博客搬家的时候没有保存下来。&amp;emsp;&amp;emsp;第一周和第二周的内容比较少，作业也是在一起布置的。 WEEK 1IntroductionWhat is machine learning? 机器学习的定义：为了完成某个目标T，从经验E中学习，同时具有一定的判断标准P。  S">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-16T07:59:52.689Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Machine Learning 第一周和第二周">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;一直有想看Andrew Ng的机器学习课程，但是拖了很久都没有看完。之前也写过一些相关的博客，但是在博客搬家的时候没有保存下来。&amp;emsp;&amp;emsp;第一周和第二周的内容比较少，作业也是在一起布置的。 WEEK 1IntroductionWhat is machine learning? 机器学习的定义：为了完成某个目标T，从经验E中学习，同时具有一定的判断标准P。  S">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://115.159.44.202/2017/10/16/机器学习/Andrew/Machine Learning 第一周和第二周/"/>
+
+
+
+
+
+  <title> Machine Learning 第一周和第二周 | Mikito </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mikito</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://115.159.44.202/2017/10/16/机器学习/Andrew/Machine Learning 第一周和第二周/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mikito">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mikito">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Machine Learning 第一周和第二周
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-16T09:53:48+08:00">
+                2017-10-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&emsp;&emsp;一直有想看Andrew Ng的机器学习课程，但是拖了很久都没有看完。之前也写过一些相关的博客，但是在博客搬家的时候没有保存下来。<br>&emsp;&emsp;第一周和第二周的内容比较少，作业也是在一起布置的。</p>
+<h1 id="WEEK-1"><a href="#WEEK-1" class="headerlink" title="WEEK 1"></a>WEEK 1</h1><h2 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h2><h3 id="What-is-machine-learning"><a href="#What-is-machine-learning" class="headerlink" title="What is machine learning?"></a>What is machine learning?</h3><ol>
+<li>机器学习的定义：为了完成某个目标T，从经验E中学习，同时具有一定的判断标准P。</li>
+</ol>
+<h3 id="Supervised-Learning"><a href="#Supervised-Learning" class="headerlink" title="Supervised Learning"></a>Supervised Learning</h3><ol>
+<li>监督学习：部分样本已有正确的结果。</li>
+<li>分类：<br>&emsp;回归问题（regression）：预测输出结果是连续值。<br>&emsp;分类问题（classification）：预测输出结果是离散值。</li>
+</ol>
+<h3 id="Unsupervised-Learning"><a href="#Unsupervised-Learning" class="headerlink" title="Unsupervised Learning"></a>Unsupervised Learning</h3><ol>
+<li>从数据本身的结构中得到模型。</li>
+<li>预测结果无反馈。</li>
+</ol>
+<h2 id="Linear-Regression-with-One-Variable（单变量线性回归）"><a href="#Linear-Regression-with-One-Variable（单变量线性回归）" class="headerlink" title="Linear Regression with One Variable（单变量线性回归）"></a>Linear Regression with One Variable（单变量线性回归）</h2><h3 id="Model-Representation"><a href="#Model-Representation" class="headerlink" title="Model Representation"></a>Model Representation</h3><ol>
+<li>符号定义：<br>&emsp;$m$：训练样本数<br>&emsp;$x’s$：输入变量<br>&emsp;$y$：输出变量<br>&emsp;$(x,y)$：一个训练样本<br>&emsp;$(x^{(i)},y^{(i)})$：第$i$个训练样本</li>
+</ol>
+<h3 id="Cost-Function"><a href="#Cost-Function" class="headerlink" title="Cost Function"></a>Cost Function</h3><ol>
+<li>假设函数：$h_\theta(x)=\theta_0+\theta_1x$</li>
+<li>代价函数（误差平方函数）：$J(\theta_0,\theta_1)=\frac{1}{m}\sum_{i=1}^{m}(h_{\theta}(x_i)-y_i)^2$</li>
+<li>目标：最小化代价函数&emsp; $minmize J(\theta_0,\theta_1)$</li>
+</ol>
+<h3 id="Cost-Function-Intuition-1"><a href="#Cost-Function-Intuition-1" class="headerlink" title="Cost Function-Intuition 1"></a>Cost Function-Intuition 1</h3><h3 id="Cost-Function-Intuition-2"><a href="#Cost-Function-Intuition-2" class="headerlink" title="Cost Function-Intuition 2"></a>Cost Function-Intuition 2</h3><ol>
+<li>$h_\theta(x)$是关于$x$的函数，$J(\theta_0,\theta_1)$是关于$\theta_0,\theta_1$的函数。</li>
+<li>可以通过轮廓图来判断$\theta_0,\theta_1$和$J(\theta_0,\theta_1)$的关系。</li>
+</ol>
+<h3 id="Gradient-Descent（梯度下降）"><a href="#Gradient-Descent（梯度下降）" class="headerlink" title="Gradient Descent（梯度下降）"></a>Gradient Descent（梯度下降）</h3><ol>
+<li>思想：<br>&emsp;(1). 选取一组$\theta_0,\theta_1$（通常都为0）<br>&emsp;(2). 不断更新$\theta_0$和$\theta_1$，直到$J(\theta_0,\theta_1)$达到局部最小值。<blockquote>
+<p>repeat until covergence{<br>&emsp;&emsp;$\theta_j:=\theta_j-\alpha\frac{d}{d\theta_j}J(\theta_0,\theta_1)$<br>}</p>
+</blockquote>
+</li>
+</ol>
+<p>&emsp;其中$\alpha$是学习速率</p>
+<ol>
+<li>在变量更新过程中应保持同步更新。</li>
+</ol>
+<h3 id="Gradient-Descent-Intuition"><a href="#Gradient-Descent-Intuition" class="headerlink" title="Gradient Descent Intuition"></a>Gradient Descent Intuition</h3><ol>
+<li>$\alpha$（学习速率）：<br>&emsp;(1). 过大，可能无法达到局部最低点。<br>&emsp;(2). 过小，十分缓慢地达到局部最低点。</li>
+<li>通常，越靠近最低点，曲线的斜率越靠近0，迈的步子越小，所以没有必要在过程中修改$_alpha$。</li>
+</ol>
+<h3 id="Gradient-Descent-For-Linear-Regression"><a href="#Gradient-Descent-For-Linear-Regression" class="headerlink" title="Gradient Descent For Linear Regression"></a>Gradient Descent For Linear Regression</h3><ol>
+<li>对变量的改变的求导展开为<br>&emsp;$\theta_0:=\theta_0-\alpha\frac{1}{m}\sum_{i=1}^{m}(h_{\theta}(x_i)-y_i)$<br>&emsp;$\theta_1:=\theta_1-\alpha\frac{1}{m}\sum_{i=1}^{m}(h_{\theta}(x_i)-y_i)\cdot x_i$</li>
+</ol>
+<h2 id="Linear-Algebra-Review"><a href="#Linear-Algebra-Review" class="headerlink" title="Linear Algebra Review"></a>Linear Algebra Review</h2><h3 id="Matrices-and-Vextors"><a href="#Matrices-and-Vextors" class="headerlink" title="Matrices and Vextors"></a>Matrices and Vextors</h3><ol>
+<li>一般使用大写字母表示矩阵，小写字母表示向量。</li>
+<li>$R$表示实数集，$R^n$表示由实数集组成的$n$维向量。</li>
+</ol>
+<h3 id="Addition-and-Scalar-Multiplication"><a href="#Addition-and-Scalar-Multiplication" class="headerlink" title="Addition and Scalar Multiplication"></a>Addition and Scalar Multiplication</h3><ol>
+<li>Scalar Multiplication：标量乘法，即一个实数乘以一个矩阵。</li>
+</ol>
+<h3 id="Matrix-Vector-Multiplication"><a href="#Matrix-Vector-Multiplication" class="headerlink" title="Matrix Vector Multiplication"></a>Matrix Vector Multiplication</h3><ol>
+<li>一个$m\times n$的矩阵与一个$n\times 1$的向量相乘的结果是一个$m\times 1$的向量。</li>
+</ol>
+<h3 id="Matrix-Matrix-Multiplication"><a href="#Matrix-Matrix-Multiplication" class="headerlink" title="Matrix Matrix Multiplication"></a>Matrix Matrix Multiplication</h3><ol>
+<li>一个$m\times n$的矩阵与一个$n\times o$的矩阵相乘的结果是一个$m\times o$的矩阵。</li>
+</ol>
+<h3 id="Matrix-Multiplication-Properties（矩阵乘法的特性）"><a href="#Matrix-Multiplication-Properties（矩阵乘法的特性）" class="headerlink" title="Matrix Multiplication Properties（矩阵乘法的特性）"></a>Matrix Multiplication Properties（矩阵乘法的特性）</h3><h3 id="Inverse-and-Transpose"><a href="#Inverse-and-Transpose" class="headerlink" title="Inverse and Transpose"></a>Inverse and Transpose</h3><ol>
+<li>$A$的逆矩阵为$A^{-1}$。</li>
+<li>一个非方阵的矩阵无逆矩阵。</li>
+</ol>
+<h1 id="WEEK-2"><a href="#WEEK-2" class="headerlink" title="WEEK 2"></a>WEEK 2</h1><h2 id="Multivariate-Linear-Regression（多元线性回归）"><a href="#Multivariate-Linear-Regression（多元线性回归）" class="headerlink" title="Multivariate Linear Regression（多元线性回归）"></a>Multivariate Linear Regression（多元线性回归）</h2><h3 id="Multiple-Features"><a href="#Multiple-Features" class="headerlink" title="Multiple Features"></a>Multiple Features</h3><ol>
+<li>符号定义：<br>&emsp;$n$：特征的数量<br>&emsp;$x^{(i)}$：第$i$个样本的特征<br>&emsp;$x_{j}^{(i)}$：第$i$个样本的第$j$个特征</li>
+</ol>
+<h3 id="Gradient-Descent-for-Multiple-Variables"><a href="#Gradient-Descent-for-Multiple-Variables" class="headerlink" title="Gradient Descent for Multiple Variables"></a>Gradient Descent for Multiple Variables</h3><ol>
+<li>假设：$h_\theta(x)=\theta^Tx=\theta_0x_0+\theta_1x_1+…+\theta_nx_n$，其中$x_0=1$。</li>
+<li>变量：$\theta=[\theta_0,\theta_1,…,\theta_n]^T$</li>
+<li>代价函数：$J(\theta_0,\theta_1)=\frac{1}{m}\sum_{i=1}^{m}(h_{\theta}(x_i)-y_i)^2$</li>
+<li>更新：<blockquote>
+<p>repeat until covergence{<br>&emsp;&emsp;$\theta_j:=\theta_j-\alpha\frac{1}{m}h_{theta}(x_i)-y_i)x_{j}^{(i)}$<br>}</p>
+</blockquote>
+</li>
+</ol>
+<h3 id="Gradient-Descent-in-Practice-1-Feature-Scaling（特征缩放）"><a href="#Gradient-Descent-in-Practice-1-Feature-Scaling（特征缩放）" class="headerlink" title="Gradient Descent in Practice 1-Feature Scaling（特征缩放）"></a>Gradient Descent in Practice 1-Feature Scaling（特征缩放）</h3><ol>
+<li>特征的尺度相似时，梯度下降进行得更快。</li>
+<li>均一化（Mean normalization）：$x_i=\frac{x_i-\mu_i}{s_i}$，其中$\mu_i$是均值，$s_i$是范围（最大值-最小值）</li>
+</ol>
+<h3 id="Gradient-Descent-in-Practice-2-Learning-rate"><a href="#Gradient-Descent-in-Practice-2-Learning-rate" class="headerlink" title="Gradient Descent in Practice 2-Learning rate"></a>Gradient Descent in Practice 2-Learning rate</h3><ol>
+<li>可以通过画$J(\theta)$和迭代次数的关系曲线图，来判断$\alpha$的选择是否正确。</li>
+<li>正常情况下，$J(\theta)$会随着迭代次数的增加而减小。</li>
+<li>$J(\theta)$下降得很慢，则$\alpha$过小。</li>
+<li>$J(\theta)$上升或者不是持续下降，则$\alpha$过大。</li>
+</ol>
+<h3 id="Features-and-Polynomial-Regression"><a href="#Features-and-Polynomial-Regression" class="headerlink" title="Features and Polynomial Regression"></a>Features and Polynomial Regression</h3><ol>
+<li>改进假设函数的方法：<br>&emsp;(1). 将多个特征合为一个特征。<br>&emsp;(2). 多项式回归。</li>
+</ol>
+<h2 id="Computing-Parameters-Analytically"><a href="#Computing-Parameters-Analytically" class="headerlink" title="Computing Parameters Analytically"></a>Computing Parameters Analytically</h2><h3 id="Normal-Equation（正规方程）"><a href="#Normal-Equation（正规方程）" class="headerlink" title="Normal Equation（正规方程）"></a>Normal Equation（正规方程）</h3><ol>
+<li>正规方程求解$\theta$时可以一步到位。</li>
+<li>假设有$m$个变量，每个变量有$n$个特征。<br>构建$X=\begin{bmatrix}<br>1 &amp; 1 &amp; … &amp; 1 \\<br>x^{(1)} &amp; x^{(1)} &amp; … &amp; x^{(m)}<br>\end{bmatrix} ^T$，$Y=[y^{(1)},y^{(2)},…,y^{(m)}]^T$<br>$X\theta = Y$<br>所以$\theta =(X^TX)^{-1}X^TY$</li>
+<li>对正规方程来说，没有必要使用特征缩放。</li>
+<li>正规方程：$\theta \in R^{n+1}$，即求得$\theta _0,\theta _1, …,\theta _n$<br>使得$\frac{d}{d\theta _j}J(\theta )=…=0$，其中$J(\theta_0,\theta_1)=\frac{1}{m}\sum_{i=1}^{m}(h_{\theta}(x_i)-y_i)^2$。</li>
+<li>对比：<br>|梯度下降|正规方程|<br>|:–:|:–:|<br>|需要选择$\alpha$|不需要选择$\alpha$|<br>|需要迭代|不需要迭代|<br>|时间复杂度$O(n^2)$|时间复杂度$O(n^3)$|<br>|$n$大时也有效|当$n$大时，运行缓慢|</li>
+<li>$n\leq 10000$，可选择正规方程求解。</li>
+</ol>
+<h3 id="Normal-Equation-Noninvertibility（不可逆性）"><a href="#Normal-Equation-Noninvertibility（不可逆性）" class="headerlink" title="Normal Equation Noninvertibility（不可逆性）"></a>Normal Equation Noninvertibility（不可逆性）</h3><ol>
+<li>$X^TX$不可逆的原因可能为：<br>&emsp;(1). 特征之间关联大。<br>&emsp;(2). 特征数量太多。</li>
+</ol>
+<h1 id="PROGRAMMING"><a href="#PROGRAMMING" class="headerlink" title="PROGRAMMING"></a>PROGRAMMING</h1><h2 id="warmUpExercise"><a href="#warmUpExercise" class="headerlink" title="warmUpExercise"></a>warmUpExercise</h2><p>&emsp;&emsp;在warmUpExercise.m中添加：<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">A = <span class="built_in">eye</span>(<span class="number">5</span>);</div></pre></td></tr></table></figure></p>
+<h2 id="Linear-regression-with-one-variable"><a href="#Linear-regression-with-one-variable" class="headerlink" title="Linear regression with one variable"></a>Linear regression with one variable</h2><h3 id="computeCost"><a href="#computeCost" class="headerlink" title="computeCost"></a>computeCost</h3><p>&emsp;&emsp;在computeCost.m中添加：<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ypre=X*theta;</div><div class="line">J=<span class="number">1</span>/<span class="number">2</span>/m*sum((ypre-y).^<span class="number">2</span>);</div></pre></td></tr></table></figure></p>
+<h3 id="gradientDescent"><a href="#gradientDescent" class="headerlink" title="gradientDescent"></a>gradientDescent</h3><p>&emsp;&emsp;gradientDescent.m中添加：<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">theta=theta-(alpha/m*sum(<span class="built_in">bsxfun</span>(@times,X*theta-y,X)))';</div></pre></td></tr></table></figure></p>
+<h2 id="Linear-regression-with-multiple-variables"><a href="#Linear-regression-with-multiple-variables" class="headerlink" title="Linear regression with multiple variables"></a>Linear regression with multiple variables</h2><h3 id="Feature-Normalization"><a href="#Feature-Normalization" class="headerlink" title="Feature Normalization"></a>Feature Normalization</h3><p>&emsp;&emsp;在featureNormalize.m中添加：<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mu=mean(X);</div><div class="line">sigma=std(X);</div><div class="line">X_norm=<span class="built_in">bsxfun</span>(@rdivide,<span class="built_in">bsxfun</span>(@minus,X,mu),sigma);</div></pre></td></tr></table></figure></p>
+<h3 id="computeCostMulti"><a href="#computeCostMulti" class="headerlink" title="computeCostMulti"></a>computeCostMulti</h3><p>&emsp;&emsp;在computeCostMulti.m中添加：<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">ypre=X*theta;</div><div class="line">J=<span class="number">1</span>/<span class="number">2</span>/m*sum((ypre-y).^<span class="number">2</span>);</div></pre></td></tr></table></figure></p>
+<h3 id="gradientDescentMulti"><a href="#gradientDescentMulti" class="headerlink" title="gradientDescentMulti"></a>gradientDescentMulti</h3><p>&emsp;&emsp;在gradientDescentMulti.m中添加：<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">theta=theta-(alpha/m*sum(<span class="built_in">bsxfun</span>(@times,X*theta-y,X)))';</div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;在ex1_multi.m中修改：<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">price = [<span class="number">1650</span>,<span class="number">3</span>];</div><div class="line">price=[<span class="number">1</span>,(price-mu)./sigma] * theta;</div></pre></td></tr></table></figure></p>
+<h2 id="normalEqn"><a href="#normalEqn" class="headerlink" title="normalEqn"></a>normalEqn</h2><p>&emsp;&emsp;normalEqn.m中添加：<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">theta=X'*X \ X'*y;</div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;在ex1_multi.m中修改：<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">price = [<span class="number">1</span>,<span class="number">1650</span>,<span class="number">3</span>];</div><div class="line">price=price* theta;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/matlab/" rel="tag"># matlab</a>
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+            <a href="/tags/Coursera/" rel="tag"># Coursera</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/10/随记/从苏大到东南，四年又三年/" rel="next" title="从苏大到东南，四年又三年">
+                <i class="fa fa-chevron-left"></i> 从苏大到东南，四年又三年
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/10/17/论文阅读/人脸识别/《Face recognition based on PCA and logistic regression analysis》阅读笔记/" rel="prev" title="《Face recognition based on PCA and logistic regression analysis》阅读笔记">
+                《Face recognition based on PCA and logistic regression analysis》阅读笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Mikito" />
+          <p class="site-author-name" itemprop="name">Mikito</p>
+           
+              <p class="site-description motion-element" itemprop="description">Computer Science</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#WEEK-1"><span class="nav-number">1.</span> <span class="nav-text">WEEK 1</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Introduction"><span class="nav-number">1.1.</span> <span class="nav-text">Introduction</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#What-is-machine-learning"><span class="nav-number">1.1.1.</span> <span class="nav-text">What is machine learning?</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Supervised-Learning"><span class="nav-number">1.1.2.</span> <span class="nav-text">Supervised Learning</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Unsupervised-Learning"><span class="nav-number">1.1.3.</span> <span class="nav-text">Unsupervised Learning</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linear-Regression-with-One-Variable（单变量线性回归）"><span class="nav-number">1.2.</span> <span class="nav-text">Linear Regression with One Variable（单变量线性回归）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Model-Representation"><span class="nav-number">1.2.1.</span> <span class="nav-text">Model Representation</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cost-Function"><span class="nav-number">1.2.2.</span> <span class="nav-text">Cost Function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cost-Function-Intuition-1"><span class="nav-number">1.2.3.</span> <span class="nav-text">Cost Function-Intuition 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Cost-Function-Intuition-2"><span class="nav-number">1.2.4.</span> <span class="nav-text">Cost Function-Intuition 2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradient-Descent（梯度下降）"><span class="nav-number">1.2.5.</span> <span class="nav-text">Gradient Descent（梯度下降）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradient-Descent-Intuition"><span class="nav-number">1.2.6.</span> <span class="nav-text">Gradient Descent Intuition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradient-Descent-For-Linear-Regression"><span class="nav-number">1.2.7.</span> <span class="nav-text">Gradient Descent For Linear Regression</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linear-Algebra-Review"><span class="nav-number">1.3.</span> <span class="nav-text">Linear Algebra Review</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Matrices-and-Vextors"><span class="nav-number">1.3.1.</span> <span class="nav-text">Matrices and Vextors</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Addition-and-Scalar-Multiplication"><span class="nav-number">1.3.2.</span> <span class="nav-text">Addition and Scalar Multiplication</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Matrix-Vector-Multiplication"><span class="nav-number">1.3.3.</span> <span class="nav-text">Matrix Vector Multiplication</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Matrix-Matrix-Multiplication"><span class="nav-number">1.3.4.</span> <span class="nav-text">Matrix Matrix Multiplication</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Matrix-Multiplication-Properties（矩阵乘法的特性）"><span class="nav-number">1.3.5.</span> <span class="nav-text">Matrix Multiplication Properties（矩阵乘法的特性）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Inverse-and-Transpose"><span class="nav-number">1.3.6.</span> <span class="nav-text">Inverse and Transpose</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#WEEK-2"><span class="nav-number">2.</span> <span class="nav-text">WEEK 2</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Multivariate-Linear-Regression（多元线性回归）"><span class="nav-number">2.1.</span> <span class="nav-text">Multivariate Linear Regression（多元线性回归）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Multiple-Features"><span class="nav-number">2.1.1.</span> <span class="nav-text">Multiple Features</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradient-Descent-for-Multiple-Variables"><span class="nav-number">2.1.2.</span> <span class="nav-text">Gradient Descent for Multiple Variables</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradient-Descent-in-Practice-1-Feature-Scaling（特征缩放）"><span class="nav-number">2.1.3.</span> <span class="nav-text">Gradient Descent in Practice 1-Feature Scaling（特征缩放）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Gradient-Descent-in-Practice-2-Learning-rate"><span class="nav-number">2.1.4.</span> <span class="nav-text">Gradient Descent in Practice 2-Learning rate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Features-and-Polynomial-Regression"><span class="nav-number">2.1.5.</span> <span class="nav-text">Features and Polynomial Regression</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Computing-Parameters-Analytically"><span class="nav-number">2.2.</span> <span class="nav-text">Computing Parameters Analytically</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Normal-Equation（正规方程）"><span class="nav-number">2.2.1.</span> <span class="nav-text">Normal Equation（正规方程）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Normal-Equation-Noninvertibility（不可逆性）"><span class="nav-number">2.2.2.</span> <span class="nav-text">Normal Equation Noninvertibility（不可逆性）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#PROGRAMMING"><span class="nav-number">3.</span> <span class="nav-text">PROGRAMMING</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#warmUpExercise"><span class="nav-number">3.1.</span> <span class="nav-text">warmUpExercise</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linear-regression-with-one-variable"><span class="nav-number">3.2.</span> <span class="nav-text">Linear regression with one variable</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#computeCost"><span class="nav-number">3.2.1.</span> <span class="nav-text">computeCost</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gradientDescent"><span class="nav-number">3.2.2.</span> <span class="nav-text">gradientDescent</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Linear-regression-with-multiple-variables"><span class="nav-number">3.3.</span> <span class="nav-text">Linear regression with multiple variables</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Feature-Normalization"><span class="nav-number">3.3.1.</span> <span class="nav-text">Feature Normalization</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#computeCostMulti"><span class="nav-number">3.3.2.</span> <span class="nav-text">computeCostMulti</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gradientDescentMulti"><span class="nav-number">3.3.3.</span> <span class="nav-text">gradientDescentMulti</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#normalEqn"><span class="nav-number">3.4.</span> <span class="nav-text">normalEqn</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mikito</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

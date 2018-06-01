@@ -1,0 +1,721 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="matlab,机器学习," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mikito" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="&amp;emsp;&amp;emsp;在基础分类器中，除了最近邻的方法外，投票也是常用的一种方法。投票的原理是：每一个部分拥有一票或多票，根据一定的规则投给某一个类别，获得最多票数的类别是最终得到的类别。 基础算法&amp;emsp;&amp;emsp;很多matlab的实现投票分类器的代码如下：12345a=1:c; % c是类别数for i=1:num   h(i,:)=hist(index(i,:),a); % inde">
+<meta name="keywords" content="matlab,机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="考虑平局的投票分类器">
+<meta property="og:url" content="http://115.159.44.202/2017/10/31/机器学习/多数投票分类器/index.html">
+<meta property="og:site_name" content="Mikito">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;在基础分类器中，除了最近邻的方法外，投票也是常用的一种方法。投票的原理是：每一个部分拥有一票或多票，根据一定的规则投给某一个类别，获得最多票数的类别是最终得到的类别。 基础算法&amp;emsp;&amp;emsp;很多matlab的实现投票分类器的代码如下：12345a=1:c; % c是类别数for i=1:num   h(i,:)=hist(index(i,:),a); % inde">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-10-31T08:27:47.395Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="考虑平局的投票分类器">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;在基础分类器中，除了最近邻的方法外，投票也是常用的一种方法。投票的原理是：每一个部分拥有一票或多票，根据一定的规则投给某一个类别，获得最多票数的类别是最终得到的类别。 基础算法&amp;emsp;&amp;emsp;很多matlab的实现投票分类器的代码如下：12345a=1:c; % c是类别数for i=1:num   h(i,:)=hist(index(i,:),a); % inde">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://115.159.44.202/2017/10/31/机器学习/多数投票分类器/"/>
+
+
+
+
+
+  <title> 考虑平局的投票分类器 | Mikito </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mikito</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://115.159.44.202/2017/10/31/机器学习/多数投票分类器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mikito">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mikito">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                考虑平局的投票分类器
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-10-31T12:33:29+08:00">
+                2017-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&emsp;&emsp;在基础分类器中，除了最近邻的方法外，投票也是常用的一种方法。投票的原理是：每一个部分拥有一票或多票，根据一定的规则投给某一个类别，获得最多票数的类别是最终得到的类别。</p>
+<h2 id="基础算法"><a href="#基础算法" class="headerlink" title="基础算法"></a>基础算法</h2><p>&emsp;&emsp;很多matlab的实现投票分类器的代码如下：<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">a=<span class="number">1</span>:c; <span class="comment">% c是类别数</span></div><div class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:num</div><div class="line">   h(<span class="built_in">i</span>,:)=hist(index(<span class="built_in">i</span>,:),a); <span class="comment">% index是一个矩阵,每一个位置都有一个数字，在0到c之间</span></div><div class="line"><span class="keyword">end</span></div><div class="line">[~,ind]=max(h,[],<span class="number">2</span>);</div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;我一开始也是使用这种方法做的分类，但是老师问我，如果是2：2怎么办呢？在我的实验中，我已知的是一个距离矩阵，共有length(X_tst)行，length(X_trn) <em> num列，即有多少个测试样本就有多少行，而训练样本数 </em> 分块数就是列数。在这种情况下，当分块数太小时很有可能出现平局的局面，而以上的算法并没有考虑到这个局面，它只是在平局时简单粗暴地选择了较小的序号。</p>
+<h2 id="考虑到平局的算法"><a href="#考虑到平局的算法" class="headerlink" title="考虑到平局的算法"></a>考虑到平局的算法</h2><p>&emsp;&emsp;这个分类算法被我用于单样本人脸识别，因此代码可能不具有通用性，但是思想方法大体差别不大。</p>
+<blockquote>
+<p>输入：距离矩阵D，共有length(X_tst)行，length(X_trn) * num列。前num列存放各个测试样本到训练图片1的num块的距离。<br>输出：分类得到的结果ind<br>流程：</p>
+<ol>
+<li>对第$i$块，得到距离矩阵dt，表示测试样本到所有训练样本第$i$块的距离。从每个dt中得到一个最小距离向量和对应的索引向量。</li>
+<li>将所有的距离向量连起来得到矩阵mindis，将所有的索引合起来得到矩阵index。</li>
+<li>对每一块，用hist进行统计，并连起来。</li>
+<li>求出每块中出现的最大次数times和对应的序号ind。</li>
+<li>用sum和bsxfun函数一起判断有没有平局的出现。</li>
+<li>对于出现平局的样本，找到平局中序号对应的最小距离，谁小测试样本就是那一类的。</li>
+</ol>
+</blockquote>
+<p>&emsp;&emsp;比起使用for循环，matlab中更提倡矩阵的运算，所以一部分我是直接使用矩阵进行运算的。但是在处理平局时，我没有找到合适的函数。使用了两层for循环，对每一个测试样本，将距离排序，依次使用最小的距离，并判断最小的距离对应的序号是否在平局的序号中，如果不是再取第二小的，依次递推。</p>
+<h2 id="matlab代码"><a href="#matlab代码" class="headerlink" title="matlab代码"></a>matlab代码</h2><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">c=max(Y_trn); <span class="comment">%类别数</span></div><div class="line">num=<span class="built_in">size</span>(d,<span class="number">2</span>)/c; <span class="comment">%每个图像有多少块</span></div><div class="line">a=<span class="number">1</span>:c;</div><div class="line">index=[];</div><div class="line">mindis=[];</div><div class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:num</div><div class="line">   dt=[];</div><div class="line">   <span class="keyword">for</span> <span class="built_in">j</span>=<span class="number">1</span>:c</div><div class="line">      dt=[dt,d(:,num*(j<span class="number">-1</span>)+i)];</div><div class="line">   <span class="keyword">end</span></div><div class="line">   [dis,ind]=min(dt,[],<span class="number">2</span>);</div><div class="line">   mindis=[mindis,dis];</div><div class="line">   index=[index,ind];</div><div class="line"><span class="keyword">end</span></div><div class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:<span class="built_in">length</span>(Y_tst)</div><div class="line">   h(<span class="built_in">i</span>,:)=hist(index(<span class="built_in">i</span>,:),a);</div><div class="line"><span class="keyword">end</span></div><div class="line">[times,ind]=max(h,[],<span class="number">2</span>); <span class="comment">% times出现的最大次数， ind：出现的最大次数对应的序号</span></div><div class="line">bf=<span class="built_in">bsxfun</span>(@eq,h,times);</div><div class="line">s=sum(bf,<span class="number">2</span>);<span class="comment">% 最大次数出现了几次</span></div><div class="line">fd=<span class="built_in">find</span>(s~=<span class="number">1</span>); <span class="comment">% 找到出现平局的情况</span></div><div class="line">[~, id]=sort(mindis,<span class="number">2</span>);</div><div class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:<span class="built_in">length</span>(fd)</div><div class="line">   <span class="keyword">for</span> <span class="built_in">j</span>=<span class="number">1</span>:num</div><div class="line">      <span class="keyword">if</span> bf(fd(<span class="built_in">i</span>),index(fd(<span class="built_in">i</span>),id(fd(<span class="built_in">i</span>),<span class="built_in">j</span>)))==<span class="number">1</span></div><div class="line">         ind(fd(<span class="built_in">i</span>))=index(fd(<span class="built_in">i</span>),id(fd(<span class="built_in">i</span>),<span class="built_in">j</span>));</div><div class="line">         <span class="keyword">break</span>;</div><div class="line">      <span class="keyword">end</span></div><div class="line">   <span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/matlab/" rel="tag"># matlab</a>
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/22/机器学习/统计学习方法/《统计学习方法》之k近邻法/" rel="next" title="《统计学习方法》之k近邻法">
+                <i class="fa fa-chevron-left"></i> 《统计学习方法》之k近邻法
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/10/机器学习/Andrew/Machine Learning 第三周/" rel="prev" title="Machine Learning 第三周">
+                Machine Learning 第三周 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Mikito" />
+          <p class="site-author-name" itemprop="name">Mikito</p>
+           
+              <p class="site-description motion-element" itemprop="description">Computer Science</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基础算法"><span class="nav-number">1.</span> <span class="nav-text">基础算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#考虑到平局的算法"><span class="nav-number">2.</span> <span class="nav-text">考虑到平局的算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matlab代码"><span class="nav-number">3.</span> <span class="nav-text">matlab代码</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mikito</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

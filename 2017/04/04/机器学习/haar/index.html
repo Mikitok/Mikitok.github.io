@@ -1,0 +1,744 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="matlab,机器学习,单样本人脸识别," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mikito" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="&amp;emsp;&amp;emsp;我在网上了解小波变换的时候，发现它是常用于信号处理的一种方法，但是在论文里也常看到小波变换用于图像处理。小波函数在一定的时间间隔内波形幅度的平均值为0。现在有很多小波函数，Haar小波变换函数是其中最基础的一种，是最简单的正交归一化小波 Harr 简介&amp;emsp;&amp;emsp;我们先看一下Harr相关的函数图形： &amp;emsp;&amp;emsp;由上图可以以得知Harr小波函数是一个">
+<meta name="keywords" content="matlab,机器学习,单样本人脸识别">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Harr 小波变换">
+<meta property="og:url" content="http://115.159.44.202/2017/04/04/机器学习/haar/index.html">
+<meta property="og:site_name" content="Mikito">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;我在网上了解小波变换的时候，发现它是常用于信号处理的一种方法，但是在论文里也常看到小波变换用于图像处理。小波函数在一定的时间间隔内波形幅度的平均值为0。现在有很多小波函数，Haar小波变换函数是其中最基础的一种，是最简单的正交归一化小波 Harr 简介&amp;emsp;&amp;emsp;我们先看一下Harr相关的函数图形： &amp;emsp;&amp;emsp;由上图可以以得知Harr小波函数是一个">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://115.159.44.202/images/haar-1.png">
+<meta property="og:image" content="http://115.159.44.202/images/haar-2.png">
+<meta property="og:updated_time" content="2017-06-17T14:26:04.037Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Harr 小波变换">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;我在网上了解小波变换的时候，发现它是常用于信号处理的一种方法，但是在论文里也常看到小波变换用于图像处理。小波函数在一定的时间间隔内波形幅度的平均值为0。现在有很多小波函数，Haar小波变换函数是其中最基础的一种，是最简单的正交归一化小波 Harr 简介&amp;emsp;&amp;emsp;我们先看一下Harr相关的函数图形： &amp;emsp;&amp;emsp;由上图可以以得知Harr小波函数是一个">
+<meta name="twitter:image" content="http://115.159.44.202/images/haar-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://115.159.44.202/2017/04/04/机器学习/haar/"/>
+
+
+
+
+
+  <title> Harr 小波变换 | Mikito </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mikito</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://115.159.44.202/2017/04/04/机器学习/haar/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mikito">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mikito">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Harr 小波变换
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-04T16:53:18+08:00">
+                2017-04-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&emsp;&emsp;我在网上了解小波变换的时候，发现它是常用于信号处理的一种方法，但是在论文里也常看到小波变换用于图像处理。小波函数在一定的时间间隔内波形幅度的平均值为0。现在有很多小波函数，Haar小波变换函数是其中最基础的一种，是最简单的正交归一化小波</p>
+<h2 id="Harr-简介"><a href="#Harr-简介" class="headerlink" title="Harr 简介"></a>Harr 简介</h2><p>&emsp;&emsp;我们先看一下Harr相关的函数图形：<br><img src="/images/haar-1.png" alt="Haar 缩放函数图形和小波函数图形"></p>
+<p>&emsp;&emsp;由上图可以以得知Harr小波函数是一个支撑域(函数$\psi(t)$不为0的区间)在$[0,1]$内的单个矩形波，公式如下：<br>$$\psi(t)=\begin{equation}<br>\left \{<br>\begin{aligned}<br>1  &amp;&amp; 0 \leq x &lt; 0.5\\<br>-1 &amp;&amp; 0.5 \leq x \leq 1\\<br>0 &amp;&amp; otherwise\\<br>\end{aligned}<br>\right.<br>\end{equation}$$</p>
+<h2 id="算法流程"><a href="#算法流程" class="headerlink" title="算法流程"></a>算法流程</h2><h3 id="Haar小波变换步骤"><a href="#Haar小波变换步骤" class="headerlink" title="Haar小波变换步骤"></a>Haar小波变换步骤</h3><blockquote>
+<ol>
+<li>把小波w(t)和原函数f(t)的开始部分进行比较，计算系数C。系数C表示该部分函数与小波的相似程度。</li>
+<li>把小波向右移k单位，得到小波w(t-k)，重复1。重复该部知道函数f结束。</li>
+<li>扩展小波w(t)，得到小波w(t/2)，重复步骤1,2。</li>
+<li>不断扩展小波，重复1,2,3。</li>
+</ol>
+</blockquote>
+<p>&emsp;&emsp;假设我们现在有一个一维的表示特征的矩阵$X={x_1,x_2,x_3,x_4}$。<br>&emsp;&emsp;然后对这个一维矩阵进行一次变换：<br>$$a_{1,0}=\frac{x_1+x_2}{2}$$<br>$$a_{1,1}=\frac{x_3+x_4}{2}$$<br>$$d_{1,3}=\frac{x_1-x_2}{2}$$<br>$$d_{1,4}=\frac{x_3-x_4}{2}$$<br>&emsp;&emsp;这样可以得到一个一维矩阵$Y={a_{1,0},a_{1,1},d_{1,3},d_{1,4}}$。这里的$a_{1,0}$和$a_{1,1}$分别是$x_1,x_2$和$x_3,x_4$的均分，反映了它们的基本特征，所以我们称之为低频成分；而$d_{1,3}$和$d_{1,4}$分别是$x_1,x_2$和$x_3,x_4$的差值，反映了它们的细节信息，所以我们称之为高频成分。<br>&emsp;&emsp;我们也可以再次运用以上的思想对矩阵$Y$再进行一次Haar小波变换，得到最终的小波系数${a_{2,0},d_{2,1},d_{1,3},d_{1,4}}$。</p>
+<h3 id="图像处理中的Harr小波变换"><a href="#图像处理中的Harr小波变换" class="headerlink" title="图像处理中的Harr小波变换"></a>图像处理中的Harr小波变换</h3><p>&emsp;&emsp;对二维图像进行Haar小波变换有两种方法：标准分解和非标准分解。标准分解是指先使用一维小波对图像的每一行的像素值进行变换,产生每一行像素的平均值和细节系数,然后再使用一维小波对这个经过行变换的图像的列进行变换,产生这个图像的平均值和细节系数。非标准分解是指使用一维小波交替地对每一行和每一列像素值进行变换。<br>&emsp;&emsp;对于对图像做小波变换，可以根据自己的需求编写函数，但是matlab也有自带的小波变换函数：dwt2和wavedec2。其中dwt2是二维单尺度小波变换，其可以通过指定小波或者分解滤波器进行二维单尺度小波分解。而wavedec2是二维多尺度小波分解。dwt2的一种语法格式是[cA,cH,cV,cD]=dwt2(X,’wname’)；而对应的wavedec的语法格式是[C,S]=wavedec2(X,N,’wname’),其中N为大于1的正整数。也就是说dwt2只能对某个输入矩阵X进行一次分解，而wavedec2可以对输入矩阵X进行N次分解。</p>
+<h2 id="matlab示例"><a href="#matlab示例" class="headerlink" title="matlab示例"></a>matlab示例</h2><h3 id="Harr小波示例"><a href="#Harr小波示例" class="headerlink" title="Harr小波示例"></a>Harr小波示例</h3><p>&emsp;&emsp;虽然matlab有自带的小波变换的函数，也可以通过open或者edit打开函数文件，查看源代码，但是忧伤的是，它的源代码往往互相之间都有联系，我打开了也是看不太懂。所以自己写了一个Haar小波的函数，没有做边界处理，就请将就着看看吧。<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="params">[L,H]</span> = <span class="title">MyHarr</span><span class="params">( line )</span></span></div><div class="line"><span class="comment">% line: 一维矩阵，表示一个信号序列，最好行和列都是2的倍数</span></div><div class="line"><span class="comment">% L: 低频成分</span></div><div class="line"><span class="comment">% H: 高频成分</span></div><div class="line"></div><div class="line">n=<span class="built_in">length</span>(line);</div><div class="line">n=n/<span class="number">2</span>;</div><div class="line">L=<span class="built_in">zeros</span>(<span class="number">1</span>, n);</div><div class="line">H=<span class="built_in">zeros</span>(<span class="number">1</span>,n);</div><div class="line"></div><div class="line"><span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:n</div><div class="line">    L(<span class="built_in">i</span>)=(line(<span class="number">2</span>*<span class="built_in">i</span><span class="number">-1</span>)+line(<span class="number">2</span>*<span class="built_in">i</span>))/<span class="number">2</span>;</div><div class="line">    H(<span class="built_in">i</span>)=(line(<span class="number">2</span>*<span class="built_in">i</span><span class="number">-1</span>)-line(<span class="number">2</span>*<span class="built_in">i</span>))/<span class="number">2</span>;</div><div class="line"><span class="keyword">end</span></div><div class="line"><span class="keyword">end</span></div></pre></td></tr></table></figure></p>
+<h3 id="matlab的dwt2-函数"><a href="#matlab的dwt2-函数" class="headerlink" title="matlab的dwt2()函数"></a>matlab的dwt2()函数</h3><p>&emsp;&emsp;dwt2()函数的一般形式就是：</p>
+<pre><code>[CA,CH,CV,CD] = dwt2(X,&apos;wname&apos;) 
+</code></pre><blockquote>
+<p>CA：approximation coefficients matrix（近似系数矩阵）<br>CH、CV、CD：details coefficients matrices（细节系数矩阵）</p>
+</blockquote>
+<p>&emsp;&emsp;使用并显示的代码如下：<br><figure class="highlight matlab"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">A=imread(<span class="string">'lena.jpg'</span>);</div><div class="line"></div><div class="line">[CA,CH,CV,CD] = dwt2(A,<span class="string">'haar'</span>) ;</div><div class="line">subplot(<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>);</div><div class="line">imshow(uint8(CA));</div><div class="line">subplot(<span class="number">2</span>,<span class="number">2</span>,<span class="number">2</span>);</div><div class="line">imshow(uint8(CH));</div><div class="line">subplot(<span class="number">2</span>,<span class="number">2</span>,<span class="number">3</span>);</div><div class="line">imshow(uint8(CV));</div><div class="line">subplot(<span class="number">2</span>,<span class="number">2</span>,<span class="number">4</span>);</div><div class="line">imshow(uint8(CD));</div></pre></td></tr></table></figure></p>
+<p>&emsp;&emsp;显示的效果图为：<br><img src="/images/haar-2.png" alt="lena处理后的显示意图"></p>
+<h3 id="matlab的wavedec2-函数"><a href="#matlab的wavedec2-函数" class="headerlink" title="matlab的wavedec2()函数"></a>matlab的wavedec2()函数</h3><p>&emsp;&emsp;wavedec2()一般使用形式为：</p>
+<pre><code>[C,S] = wavedec2(X,N,&apos;wname&apos;) 
+</code></pre><p>&emsp;&emsp;这是一种二维多尺度小波分解函数，分解的次数和传入的参数N有关。其中C是一个行向量，它的组成如下：</p>
+<blockquote>
+<p>C = [ A(N) | H(N) | V(N) | D(N) | … H(N-1) | V(N-1) | D(N-1) | … | H(1) | V(1) | D(1) ].</p>
+</blockquote>
+<p>&emsp;&emsp;介于这个不太好显示结果，我就不放出matlab代码了，实在需要的话相关的文档中有一段。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/matlab/" rel="tag"># matlab</a>
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+            <a href="/tags/单样本人脸识别/" rel="tag"># 单样本人脸识别</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/29/机器学习/主成分分析/" rel="next" title="主成分分析（Principal Component Analysis）">
+                <i class="fa fa-chevron-left"></i> 主成分分析（Principal Component Analysis）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/04/06/刷题/华为2016研发工程师编程题-删数/" rel="prev" title="华为2016研发工程师编程题-删数">
+                华为2016研发工程师编程题-删数 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Mikito" />
+          <p class="site-author-name" itemprop="name">Mikito</p>
+           
+              <p class="site-description motion-element" itemprop="description">Computer Science</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Harr-简介"><span class="nav-number">1.</span> <span class="nav-text">Harr 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法流程"><span class="nav-number">2.</span> <span class="nav-text">算法流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Haar小波变换步骤"><span class="nav-number">2.1.</span> <span class="nav-text">Haar小波变换步骤</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图像处理中的Harr小波变换"><span class="nav-number">2.2.</span> <span class="nav-text">图像处理中的Harr小波变换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#matlab示例"><span class="nav-number">3.</span> <span class="nav-text">matlab示例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Harr小波示例"><span class="nav-number">3.1.</span> <span class="nav-text">Harr小波示例</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#matlab的dwt2-函数"><span class="nav-number">3.2.</span> <span class="nav-text">matlab的dwt2()函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#matlab的wavedec2-函数"><span class="nav-number">3.3.</span> <span class="nav-text">matlab的wavedec2()函数</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mikito</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

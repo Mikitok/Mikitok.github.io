@@ -1,0 +1,1011 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Linux," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mikito" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="&amp;emsp;&amp;emsp;其实最开始我也是没有打算写这篇博客的，毕竟网上的相关文档很多，而且对于每个命令我也不打算详细讲，但是期末考要到了，对于命令不熟的我能怎么办啊……我也很绝望啊…… 简单命令   命令 用法     who 列出所有正在使用系统的用户、所用终端名和注册到系统的时间   echo 将命令行中的参数显示到标准输出上   date 显示或设置系统的日期和时间   cal 显示公元1~">
+<meta name="keywords" content="Linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell常用命令汇总">
+<meta property="og:url" content="http://115.159.44.202/2017/06/22/shell常用命令汇总/index.html">
+<meta property="og:site_name" content="Mikito">
+<meta property="og:description" content="&amp;emsp;&amp;emsp;其实最开始我也是没有打算写这篇博客的，毕竟网上的相关文档很多，而且对于每个命令我也不打算详细讲，但是期末考要到了，对于命令不熟的我能怎么办啊……我也很绝望啊…… 简单命令   命令 用法     who 列出所有正在使用系统的用户、所用终端名和注册到系统的时间   echo 将命令行中的参数显示到标准输出上   date 显示或设置系统的日期和时间   cal 显示公元1~">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-06-22T03:07:20.137Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="shell常用命令汇总">
+<meta name="twitter:description" content="&amp;emsp;&amp;emsp;其实最开始我也是没有打算写这篇博客的，毕竟网上的相关文档很多，而且对于每个命令我也不打算详细讲，但是期末考要到了，对于命令不熟的我能怎么办啊……我也很绝望啊…… 简单命令   命令 用法     who 列出所有正在使用系统的用户、所用终端名和注册到系统的时间   echo 将命令行中的参数显示到标准输出上   date 显示或设置系统的日期和时间   cal 显示公元1~">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://115.159.44.202/2017/06/22/shell常用命令汇总/"/>
+
+
+
+
+
+  <title> shell常用命令汇总 | Mikito </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mikito</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://115.159.44.202/2017/06/22/shell常用命令汇总/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mikito">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mikito">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                shell常用命令汇总
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-22T16:23:29+08:00">
+                2017-06-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&emsp;&emsp;其实最开始我也是没有打算写这篇博客的，毕竟网上的相关文档很多，而且对于每个命令我也不打算详细讲，但是期末考要到了，对于命令不熟的我能怎么办啊……我也很绝望啊……</p>
+<h2 id="简单命令"><a href="#简单命令" class="headerlink" title="简单命令"></a>简单命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>who</td>
+<td>列出所有正在使用系统的用户、所用终端名和注册到系统的时间</td>
+</tr>
+<tr>
+<td>echo</td>
+<td>将命令行中的参数显示到标准输出上</td>
+</tr>
+<tr>
+<td>date</td>
+<td>显示或设置系统的日期和时间</td>
+</tr>
+<tr>
+<td>cal</td>
+<td>显示公元1~9999年中任何一年或一个月的日历</td>
+</tr>
+<tr>
+<td>clear</td>
+<td>清除屏幕上的信息</td>
+</tr>
+<tr>
+<td>passwd</td>
+<td>和用户口令相关</td>
+</tr>
+</tbody>
+</table>
+<h2 id="文件操作命令"><a href="#文件操作命令" class="headerlink" title="文件操作命令"></a>文件操作命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cat</td>
+<td>连接文件并打印到标准输出设备上</td>
+</tr>
+<tr>
+<td>more</td>
+<td>显示文件内容，每次显示一屏</td>
+</tr>
+<tr>
+<td>less</td>
+<td>分屏显示文件内容</td>
+</tr>
+<tr>
+<td>head</td>
+<td>显示指定文件的开头若干行</td>
+</tr>
+<tr>
+<td>tail</td>
+<td>显示指定文件末尾若干行</td>
+</tr>
+<tr>
+<td>touch</td>
+<td>修改指定文件的时间标签或者创建一个空文件</td>
+</tr>
+<tr>
+<td>grep</td>
+<td>在文件中查找指定模式的词或短语，并输出包括给定字符的所有行</td>
+</tr>
+<tr>
+<td>sort</td>
+<td>对文本文件各行排序</td>
+</tr>
+<tr>
+<td>uniq</td>
+<td>从排好序的文件中去除重复行</td>
+</tr>
+<tr>
+<td>comm</td>
+<td>对两个已经排好序的文件进行比较</td>
+</tr>
+<tr>
+<td>diff</td>
+<td>比较两个文件，并找出它们的不同</td>
+</tr>
+<tr>
+<td>cp</td>
+<td>将源文件或目录复制到目标文件或目录中</td>
+</tr>
+<tr>
+<td>rm</td>
+<td>删除文件和目录</td>
+</tr>
+<tr>
+<td>mv</td>
+<td>对文件或目录重命名，或者将一个文件从一个目录移到另一个目录中</td>
+</tr>
+<tr>
+<td>wc</td>
+<td>统计指定文件的字节数、字数、行数，并显示出来</td>
+</tr>
+<tr>
+<td>mkdir</td>
+<td>创建目录</td>
+</tr>
+<tr>
+<td>rmdir</td>
+<td>删除目录</td>
+</tr>
+<tr>
+<td>cd</td>
+<td>改变工作目录</td>
+</tr>
+<tr>
+<td>pwd</td>
+<td>显示当前工作目录的绝对路径</td>
+</tr>
+<tr>
+<td>ls</td>
+<td>列出指定目录的内容</td>
+</tr>
+<tr>
+<td>ln</td>
+<td>创建链接</td>
+</tr>
+<tr>
+<td>chmod</td>
+<td>改变或设置文件的存取权限</td>
+</tr>
+<tr>
+<td>umask</td>
+<td>设置新建文件权限的掩码</td>
+</tr>
+<tr>
+<td>chgrp</td>
+<td>改变文件或目录所属的用户组</td>
+</tr>
+<tr>
+<td>chown</td>
+<td>改变文件或目录的所有者和所属的组</td>
+</tr>
+</tbody>
+</table>
+<h2 id="联机帮助命令"><a href="#联机帮助命令" class="headerlink" title="联机帮助命令"></a>联机帮助命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>man</td>
+<td>命令格式化并显示某一命令的联机帮助手册页</td>
+</tr>
+<tr>
+<td>help</td>
+<td>查看所有shell内置命令的帮助信息</td>
+</tr>
+</tbody>
+</table>
+<h2 id="有关进程管理的命令"><a href="#有关进程管理的命令" class="headerlink" title="有关进程管理的命令"></a>有关进程管理的命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ps</td>
+<td>查看当前系统中运行的进程信息</td>
+</tr>
+<tr>
+<td>kill</td>
+<td>终止一个进程的运行</td>
+</tr>
+<tr>
+<td>sleep</td>
+<td>使进程暂停一段时间</td>
+</tr>
+</tbody>
+</table>
+<h2 id="文件压缩和解压缩命令"><a href="#文件压缩和解压缩命令" class="headerlink" title="文件压缩和解压缩命令"></a>文件压缩和解压缩命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>gzip</td>
+<td>对文件进行压缩和解压缩</td>
+</tr>
+<tr>
+<td>uzip</td>
+<td>对zip格式的压缩文件进行解压缩</td>
+</tr>
+</tbody>
+</table>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>history</td>
+<td>显示命令历史表中的命令</td>
+</tr>
+<tr>
+<td>alias</td>
+<td>定义别名</td>
+</tr>
+<tr>
+<td>unalias</td>
+<td>取消定义的别名</td>
+</tr>
+<tr>
+<td>read</td>
+<td>读取数据</td>
+</tr>
+<tr>
+<td>shift</td>
+<td>将命令行的实参左移一位</td>
+</tr>
+<tr>
+<td>export</td>
+<td>定义一些变量并赋值</td>
+</tr>
+<tr>
+<td>set</td>
+<td></td>
+</tr>
+<tr>
+<td>unset</td>
+</tr>
+</tbody>
+</table>
+<h2 id="作业控制"><a href="#作业控制" class="headerlink" title="作业控制"></a>作业控制</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>jobs</td>
+<td>列出当前未完成的作业</td>
+</tr>
+<tr>
+<td>bg</td>
+<td>把前台作业切换成后台作业</td>
+</tr>
+<tr>
+<td>fg</td>
+<td>把后台作业切换成前台作业</td>
+</tr>
+</tbody>
+</table>
+<h2 id="shell内置命令"><a href="#shell内置命令" class="headerlink" title="shell内置命令"></a>shell内置命令</h2><table>
+<thead>
+<tr>
+<th>命令</th>
+<th>用法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>eval</td>
+<td>进行变量替换，然后执行命令</td>
+</tr>
+<tr>
+<td>exec</td>
+<td>执行命令，但不创建新的进程</td>
+</tr>
+<tr>
+<td>hash</td>
+<td>确定并计组指定的命令在搜索路径中的位置</td>
+</tr>
+<tr>
+<td>readonly</td>
+<td>标记给定的变量是只读的，不能改变其值</td>
+</tr>
+<tr>
+<td>trap</td>
+<td>设定接收到某个信号完成的动作，忽略某个信号的影响，或者恢复该信号产生时系统预设的动作</td>
+</tr>
+<tr>
+<td>type</td>
+<td>显示给定命令是如何被解释的</td>
+</tr>
+<tr>
+<td>unset</td>
+<td>删除指定的相应变量或函数</td>
+</tr>
+<tr>
+<td>wait</td>
+<td>等待指定的进程终止</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Linux/" rel="tag"># Linux</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/06/18/用jupyter notebook进行hexo博客管理/" rel="next" title="用jupyter notebook进行hexo博客管理">
+                <i class="fa fa-chevron-left"></i> 用jupyter notebook进行hexo博客管理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/23/随记/道别/" rel="prev" title="道别">
+                道别 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Mikito" />
+          <p class="site-author-name" itemprop="name">Mikito</p>
+           
+              <p class="site-description motion-element" itemprop="description">Computer Science</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#简单命令"><span class="nav-number">1.</span> <span class="nav-text">简单命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件操作命令"><span class="nav-number">2.</span> <span class="nav-text">文件操作命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#联机帮助命令"><span class="nav-number">3.</span> <span class="nav-text">联机帮助命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#有关进程管理的命令"><span class="nav-number">4.</span> <span class="nav-text">有关进程管理的命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件压缩和解压缩命令"><span class="nav-number">5.</span> <span class="nav-text">文件压缩和解压缩命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">6.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#作业控制"><span class="nav-number">7.</span> <span class="nav-text">作业控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shell内置命令"><span class="nav-number">8.</span> <span class="nav-text">shell内置命令</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mikito</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

@@ -1,0 +1,711 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="C语言," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Mikito" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="2012年上机题题目&amp;emsp;&amp;emsp;从服务器上下载数据文件org.dat文件以二进制方式存放一系列整数，每个整数占4个字节。从第一个整数开始，第一个整数和第二个整数构成一个坐标点，依次类推，数据文件中保存了许多坐标点数据。&amp;emsp;&amp;emsp;问题1：&amp;emsp;&amp;emsp;规定处于第一象限的坐标点为有效点，请问数据文件中所有点的个数n为多少？有效点的个数k为多少？&amp;emsp;&amp;emsp">
+<meta name="keywords" content="C语言">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2012-2014年上机复试题">
+<meta property="og:url" content="http://115.159.44.202/2017/09/11/保研/2012-2014年上机复试题/index.html">
+<meta property="og:site_name" content="Mikito">
+<meta property="og:description" content="2012年上机题题目&amp;emsp;&amp;emsp;从服务器上下载数据文件org.dat文件以二进制方式存放一系列整数，每个整数占4个字节。从第一个整数开始，第一个整数和第二个整数构成一个坐标点，依次类推，数据文件中保存了许多坐标点数据。&amp;emsp;&amp;emsp;问题1：&amp;emsp;&amp;emsp;规定处于第一象限的坐标点为有效点，请问数据文件中所有点的个数n为多少？有效点的个数k为多少？&amp;emsp;&amp;emsp">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2017-09-13T04:45:22.347Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2012-2014年上机复试题">
+<meta name="twitter:description" content="2012年上机题题目&amp;emsp;&amp;emsp;从服务器上下载数据文件org.dat文件以二进制方式存放一系列整数，每个整数占4个字节。从第一个整数开始，第一个整数和第二个整数构成一个坐标点，依次类推，数据文件中保存了许多坐标点数据。&amp;emsp;&amp;emsp;问题1：&amp;emsp;&amp;emsp;规定处于第一象限的坐标点为有效点，请问数据文件中所有点的个数n为多少？有效点的个数k为多少？&amp;emsp;&amp;emsp">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://115.159.44.202/2017/09/11/保研/2012-2014年上机复试题/"/>
+
+
+
+
+
+  <title> 2012-2014年上机复试题 | Mikito </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Mikito</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://115.159.44.202/2017/09/11/保研/2012-2014年上机复试题/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Mikito">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Mikito">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                2012-2014年上机复试题
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-11T09:51:29+08:00">
+                2017-09-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/保研/" itemprop="url" rel="index">
+                    <span itemprop="name">保研</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="2012年上机题"><a href="#2012年上机题" class="headerlink" title="2012年上机题"></a>2012年上机题</h2><h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>&emsp;&emsp;从服务器上下载数据文件org.dat文件以二进制方式存放一系列整数，每个整数占4个字节。从第一个整数开始，第一个整数和第二个整数构成一个坐标点，依次类推，数据文件中保存了许多坐标点数据。<br>&emsp;&emsp;问题1：<br>&emsp;&emsp;规定处于第一象限的坐标点为有效点，请问数据文件中所有点的个数n为多少？有效点的个数k为多少？<br>&emsp;&emsp;问题2：<br>&emsp;&emsp;每个有效点与坐标原点构成一个的矩形，请问k个有效点与坐标原点构成的k个矩形的最小公共区域面积为多少？<br>&emsp;&emsp;问题3：<br>&emsp;&emsp;寻找有效点中符合下列条件的点：以该点为坐标原点，其他有效点仍然是有效点即处于第一象限（不包括坐标轴上的点）。输出这些点。<br>&emsp;&emsp;问题4：<br>&emsp;&emsp;对所有有效点进行分组，每个有效点有且只能属于一个分组，分组内的点符合下列规则：若对组内所有点的x坐标进行排序，点p1（x1，y1）在点p2（x2，y2）后面，即x1&gt;x2那么y1&gt;y2.请输出所有的分组。</p>
+<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>&emsp;&emsp;我看到有的代码是分题做的，这样更好给分，但是我就混在一起了，因为有些功能可以同时完成。<br>&emsp;&emsp;我大概分成下面几个部分：<br>&emsp;&emsp;（1）读文件，求出n和k，保存有效点。<br>&emsp;&emsp;（2）以x的的大小由小到大进行排序。经过简单处理。可以得到最小公共面积和问题三所求的点。<br>&emsp;&emsp;（3）分组。我就遍历了，对每个点给了一个符号位。时间复杂度比较高。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">fileRead</span><span class="params">(FILE * fp, <span class="keyword">int</span> num[][<span class="number">2</span>], <span class="keyword">int</span> *k, <span class="keyword">int</span> * n)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span>* a, <span class="keyword">const</span> <span class="keyword">void</span> *b)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">findMinSquare</span><span class="params">(<span class="keyword">int</span> num[][<span class="number">2</span>], <span class="keyword">int</span> k)</span></span>;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">divideGroup</span><span class="params">(<span class="keyword">int</span> num[][<span class="number">2</span>], <span class="keyword">int</span> k, <span class="keyword">int</span> group[])</span></span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	FILE * fp = fopen(<span class="string">"org.dat"</span>, <span class="string">"rb"</span>);</div><div class="line">	<span class="keyword">if</span> (fp == <span class="literal">NULL</span>) &#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"FILE OPEN ERROR!\n"</span>);</div><div class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="comment">// 造数据文件，coor.txt中已经存放了一些数据</span></div><div class="line">	<span class="comment">//FILE * fp = fopen("org.dat", "wb");</span></div><div class="line">	<span class="comment">//FILE * f2 = fopen("coor.txt","r");</span></div><div class="line">	<span class="comment">//if (fp == NULL || f2==NULL) &#123;</span></div><div class="line">	<span class="comment">//	printf("FILE OPEN ERROR!\n");</span></div><div class="line">	<span class="comment">//	exit(1);</span></div><div class="line">	<span class="comment">//&#125;</span></div><div class="line">	<span class="comment">//int t;</span></div><div class="line">	<span class="comment">//while (fscanf(f2, "%d", &amp;t) != EOF) &#123;</span></div><div class="line">	<span class="comment">//	fwrite(&amp;t, sizeof(int), 1, fp);</span></div><div class="line">	<span class="comment">//&#125;</span></div><div class="line">	<span class="comment">//fclose(f2);</span></div><div class="line"></div><div class="line">	<span class="keyword">int</span> num[<span class="number">1000</span>][<span class="number">2</span>], k = <span class="number">0</span>, n = <span class="number">0</span>, groupnum;</div><div class="line">	<span class="keyword">int</span> group[<span class="number">100</span>];</div><div class="line">	</div><div class="line">	fileRead(fp, num, &amp;k, &amp;n);</div><div class="line"></div><div class="line">	<span class="built_in">printf</span>(<span class="string">"所有点的个数为：%d\n"</span>, n);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"支配点的个数为：%d\n"</span>, k);</div><div class="line"></div><div class="line">	qsort(num, k, <span class="keyword">sizeof</span>(num[<span class="number">0</span>]), cmp);</div><div class="line">	findMinSquare(num, k);</div><div class="line"></div><div class="line">	<span class="built_in">memset</span>(group, <span class="number">-1</span>, <span class="keyword">sizeof</span>(group));</div><div class="line">	groupnum = divideGroup(num, k, group);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"共分为%d组，具体如下：\n"</span>, groupnum);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; groupnum; i++) &#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"第%d组点为："</span>, groupnum);</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; k; j++) &#123;</div><div class="line">			<span class="keyword">if</span> (group[j] == i) &#123;</div><div class="line">				<span class="built_in">printf</span>(<span class="string">" (%d, %d)"</span>, num[j][<span class="number">0</span>], num[j][<span class="number">1</span>]);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	fclose(fp);</div><div class="line"></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">fileRead</span><span class="params">(FILE * fp, <span class="keyword">int</span> num[][<span class="number">2</span>], <span class="keyword">int</span> *k, <span class="keyword">int</span> * n)</span> </span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> x, y;</div><div class="line">	<span class="keyword">while</span> (fread(&amp;x, <span class="keyword">sizeof</span>(<span class="keyword">int</span>), <span class="number">1</span>, fp) &amp;&amp; fread(&amp;y, <span class="keyword">sizeof</span>(<span class="keyword">int</span>), <span class="number">1</span>, fp)) &#123;</div><div class="line">		*n = *n + <span class="number">1</span>;</div><div class="line">		<span class="keyword">if</span> (x &gt; <span class="number">0</span> &amp;&amp; y &gt; <span class="number">0</span>) &#123;</div><div class="line">			num[*k][<span class="number">0</span>] = x;</div><div class="line">			num[*k][<span class="number">1</span>] = y;</div><div class="line">			*k = *k + <span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">cmp</span><span class="params">(<span class="keyword">const</span> <span class="keyword">void</span>* a, <span class="keyword">const</span> <span class="keyword">void</span> *b)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">return</span> ((<span class="keyword">int</span> *)a)[<span class="number">0</span>] - ((<span class="keyword">int</span> *)b)[<span class="number">0</span>];</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">findMinSquare</span><span class="params">(<span class="keyword">int</span> num[][<span class="number">2</span>], <span class="keyword">int</span> k)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> minx, miny;</div><div class="line">	<span class="keyword">if</span> (k == <span class="number">1</span>) &#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"最小公共面积是：%d\n"</span>, num[<span class="number">0</span>][<span class="number">0</span>] * num[<span class="number">0</span>][<span class="number">1</span>]);</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"符合要求的点的坐标为：(%d, %d)"</span>, num[<span class="number">0</span>][<span class="number">0</span>], num[<span class="number">0</span>][<span class="number">1</span>]);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	<span class="keyword">else</span> &#123;</div><div class="line">		<span class="keyword">if</span> (num[<span class="number">0</span>][<span class="number">0</span>] &lt; num[<span class="number">1</span>][<span class="number">0</span>] &amp;&amp; num[<span class="number">0</span>][<span class="number">1</span>] &lt; num[<span class="number">1</span>][<span class="number">1</span>]) &#123;</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"最小公共面积是：%d\n"</span>, num[<span class="number">0</span>][<span class="number">0</span>] * num[<span class="number">0</span>][<span class="number">1</span>]);</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"符合要求的点的坐标为：(%d, %d)\n"</span>, num[<span class="number">0</span>][<span class="number">0</span>], num[<span class="number">0</span>][<span class="number">1</span>]);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> &#123;</div><div class="line">			minx = num[<span class="number">0</span>][<span class="number">0</span>];</div><div class="line">			miny = num[<span class="number">0</span>][<span class="number">1</span>];</div><div class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; k; i++) &#123;</div><div class="line">				<span class="keyword">if</span> (minx &gt; num[i][<span class="number">0</span>]) &#123;</div><div class="line">					minx = num[i][<span class="number">0</span>];</div><div class="line">				&#125;</div><div class="line">				<span class="keyword">if</span> (miny &gt; num[i][<span class="number">1</span>]) &#123;</div><div class="line">					minx = num[i][<span class="number">1</span>];</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"最小公共面积是：%d\n"</span>, minx * miny);</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"没有符合要求的点的坐标。\n"</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">divideGroup</span><span class="params">(<span class="keyword">int</span> num[][<span class="number">2</span>], <span class="keyword">int</span> k, <span class="keyword">int</span> group[])</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> groupnum = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> tx, ty;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; i++)</div><div class="line">	&#123;</div><div class="line">		<span class="keyword">if</span> (group[i] == <span class="number">-1</span>) &#123;</div><div class="line">			group[i] = groupnum;</div><div class="line">			</div><div class="line">			tx = num[i][<span class="number">0</span>];</div><div class="line">			ty = num[i][<span class="number">1</span>];</div><div class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; k; j++) &#123;</div><div class="line">				<span class="keyword">if</span> (group[j] == <span class="number">-1</span> &amp;&amp; num[j][<span class="number">0</span>] &gt; tx &amp;&amp; num[j][<span class="number">1</span>] &gt; ty) &#123;</div><div class="line">					group[j] = groupnum;</div><div class="line">					tx = num[j][<span class="number">0</span>];</div><div class="line">					ty = num[j][<span class="number">1</span>];</div><div class="line">				&#125;</div><div class="line">			&#125;</div><div class="line">			groupnum++;;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> groupnum;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="2013年上机题"><a href="#2013年上机题" class="headerlink" title="2013年上机题"></a>2013年上机题</h2><h3 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h3><p>&emsp;&emsp;二进制数据文件1.bin中存放了100000个样本点，每个样本点由4个属性构成，属性均为整型。<br>&emsp;&emsp;定义：    如a点的k个属性不比b点的对应属性差（属性值越小越好），<br>&emsp;&emsp;且a点至少有一个属性比b点的对应属性好，则称a点k-支配b点。<br>&emsp;&emsp;要求：    求出不被任何点k-支配的样本点的个数。<br>&emsp;&emsp;在试卷上填写求出的样本点个数和所用时间（Elapsed Time）。</p>
+<h3 id="分析-1"><a href="#分析-1" class="headerlink" title="分析"></a>分析</h3><p>&emsp;&emsp;这道题看上去不难，但是倒是花费了我不少的时间，其中有许多大大小小的bug。先简单介绍一下程序的几个部分：<br>&emsp;&emsp;（1）计时（这个已经写好了）<br>&emsp;&emsp;（2）读取文件中的数据并保存。<br>&emsp;&emsp;（3）遍历数组，寻找不被控制的数据。<br>&emsp;&emsp;我原来打算直接开一个$100000*4$的数组来保存数据，但是报了stack overflow的错，我查了下，说是栈的默认大小是1M，这明显超过了。我就决定用结构体+手动分配内存，但是没想到保存结构体指针的数组也超过了内存限制（原谅我没算）。后来发现只要开成全局变量就好了。<br>&emsp;&emsp;考虑到数据有100000个，昨天丁大佬说10000个数据的话复杂度为$n^2$就有些大了，我就考虑到能不能减少时间复杂度。着就想到了链表。最开始的构想是两层遍历，去掉被控制的点。后来想到为了减少比较的次数，可以设置标志位。既然说到了标志位，就想到不如直接用链表删掉被控制的点就好了。这个算法的时间复杂度我没有求，但是最好情况是$O(n)$，最坏情况是$O(n^2)$。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXSIZE 100000</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">(<span class="keyword">void</span>)</span></span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	LARGE_INTEGER m_nFreq;</div><div class="line">	LARGE_INTEGER m_nBeginTime;</div><div class="line">	LARGE_INTEGER m_nEndTime;</div><div class="line"></div><div class="line">	QueryPerformanceFrequency(&amp;m_nFreq);</div><div class="line">	QueryPerformanceCounter(&amp;m_nBeginTime);</div><div class="line"></div><div class="line">	run();</div><div class="line"></div><div class="line">	QueryPerformanceCounter(&amp;m_nEndTime);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\nElapsed Time = %lf sec\n"</span>,(<span class="keyword">double</span>)(m_nEndTime.QuadPart-m_nBeginTime.QuadPart)/m_nFreq.QuadPart);</div><div class="line">	<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">struct</span> Dot</div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> pos[<span class="number">4</span>];</div><div class="line">	Dot * next;</div><div class="line">&#125;;</div><div class="line"></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">dataRead</span><span class="params">(FILE * fp, Dot * head)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">eraseControlDot</span><span class="params">(Dot * head, <span class="keyword">int</span> * count)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">freeSpace</span><span class="params">(Dot * head)</span></span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">(<span class="keyword">void</span>)</span></span></div><div class="line">&#123;</div><div class="line">	FILE * fp = fopen(<span class="string">"1.bin"</span>, <span class="string">"rb"</span>);</div><div class="line">	<span class="keyword">if</span> (fp == <span class="literal">NULL</span>) &#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"FILE OPEN ERROR!\n"</span>);</div><div class="line">		<span class="built_in">exit</span>(<span class="number">0</span>);</div><div class="line">	&#125;</div><div class="line"></div><div class="line">	Dot * head = (Dot *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Dot));</div><div class="line">	head-&gt;next = <span class="literal">NULL</span>;</div><div class="line"></div><div class="line">	<span class="keyword">int</span> count = dataRead(fp, head);</div><div class="line">	eraseControlDot(head, &amp;count);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d"</span>, count);</div><div class="line">	</div><div class="line">   freeSpace(head);</div><div class="line">   </div><div class="line">	fclose(fp);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">dataRead</span><span class="params">(FILE * fp, Dot * head)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">	<span class="keyword">int</span> a, b, c, d;</div><div class="line">	Dot * node, *p = head;</div><div class="line"></div><div class="line">	<span class="keyword">while</span> (fread(&amp;a, <span class="keyword">sizeof</span>(<span class="keyword">int</span>), <span class="number">1</span>, fp) &amp;&amp; fread(&amp;b, <span class="keyword">sizeof</span>(<span class="keyword">int</span>), <span class="number">1</span>, fp) &amp;&amp; fread(&amp;c, <span class="keyword">sizeof</span>(<span class="keyword">int</span>), <span class="number">1</span>, fp) &amp;&amp;</div><div class="line">    fread(&amp;d, <span class="keyword">sizeof</span>(<span class="keyword">int</span>), <span class="number">1</span>, fp ) &amp;&amp; count &lt; MAXSIZE) &#123;</div><div class="line">		node = (Dot *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Dot));</div><div class="line">		node-&gt;pos[<span class="number">0</span>] = a;</div><div class="line">		node-&gt;pos[<span class="number">1</span>] = b;</div><div class="line">		node-&gt;pos[<span class="number">2</span>] = c;</div><div class="line">		node-&gt;pos[<span class="number">3</span>] = d;</div><div class="line">		node-&gt;next = <span class="literal">NULL</span>;</div><div class="line">		p-&gt;next = node;</div><div class="line">		p = node;</div><div class="line">		count++;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> count;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">eraseControlDot</span><span class="params">(Dot * head, <span class="keyword">int</span> * count)</span></span></div><div class="line">&#123;</div><div class="line">	Dot *p, *q, *current;</div><div class="line">	<span class="keyword">if</span> (*count &gt; <span class="number">0</span>) &#123;</div><div class="line">		current = head-&gt;next;</div><div class="line">		<span class="keyword">while</span>(current != <span class="literal">NULL</span>) &#123;</div><div class="line">			q = head;</div><div class="line">			p = head-&gt;next;</div><div class="line">			<span class="keyword">while</span> (p != <span class="literal">NULL</span>) &#123;</div><div class="line">				<span class="keyword">if</span> (p-&gt;pos[<span class="number">0</span>] &gt;= current-&gt;pos[<span class="number">0</span>] &amp;&amp; p-&gt;pos[<span class="number">1</span>] &gt;= current-&gt;pos[<span class="number">1</span>] &amp;&amp; </div><div class="line">                p-&gt;pos[<span class="number">2</span>] &gt;= current-&gt;pos[<span class="number">2</span>]&amp;&amp; p-&gt;pos[<span class="number">3</span>] &gt;= current-&gt;pos[<span class="number">3</span>] </div><div class="line">                &amp;&amp;(p-&gt;pos[<span class="number">0</span>] &gt; current-&gt;pos[<span class="number">0</span>] || p-&gt;pos[<span class="number">1</span>] &gt; current-&gt;pos[<span class="number">1</span>] </div><div class="line">                || p-&gt;pos[<span class="number">2</span>] &gt; current-&gt;pos[<span class="number">2</span>] || p-&gt;pos[<span class="number">3</span>] &gt; current-&gt;pos[<span class="number">3</span>])) &#123;</div><div class="line">					q-&gt;next = p-&gt;next;</div><div class="line">					<span class="built_in">free</span>(p);</div><div class="line">					p = q-&gt;next;</div><div class="line">					*count = *count - <span class="number">1</span>;</div><div class="line">				&#125;</div><div class="line">				<span class="keyword">else</span> &#123;</div><div class="line">					p = p-&gt;next;</div><div class="line">					q = q-&gt;next;</div><div class="line">				&#125;			</div><div class="line">			&#125;</div><div class="line">			current = current-&gt;next;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">freeSpace</span><span class="params">(Dot * head)</span></span></div><div class="line">&#123;</div><div class="line">	Dot *p, *q;</div><div class="line">	p = head-&gt;next;</div><div class="line">	q = head;</div><div class="line">	<span class="keyword">while</span> (p != <span class="literal">NULL</span>) &#123;</div><div class="line">		<span class="built_in">free</span>(q);</div><div class="line">		q = p;</div><div class="line">		p = p-&gt;next;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">free</span>(p);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="2014年上机题"><a href="#2014年上机题" class="headerlink" title="2014年上机题"></a>2014年上机题</h2><h3 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h3><p>&emsp;&emsp;input.bin中有10000组数据，每组数据有4个属性，都为整型。定义邻近点为拥有k个距离小于等于d的点的点，$d=\sqrt{(b_1-a_1)*(b_1-a_1)+(b_2-a_2)*(b_2-a_2)+(b_3-a_3)*(b_3-a_3)+(b_4-a_4)*(b_4-a_4)}$;现定义k=10，d=7500，显示出符合点的编号及其各个属性。</p>
+<h3 id="分析-2"><a href="#分析-2" class="headerlink" title="分析"></a>分析</h3><p>&emsp;&emsp;这道题就是两次循环求解，不难，但是数据量比较大，时间比较长。</p>
+<h3 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h3><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;math.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;windows.h&gt;</span></span></div><div class="line"></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> ARRAYSIZE 10000</span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></div><div class="line"></div><div class="line"><span class="keyword">struct</span> Dot &#123;</div><div class="line">	<span class="keyword">int</span> pos[<span class="number">4</span>];</div><div class="line">	<span class="keyword">int</span> ngb;</div><div class="line">	<span class="function"><span class="keyword">void</span> <span class="title">initDot</span><span class="params">()</span> </span>&#123;</div><div class="line">		ngb = <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">&#125;points[ARRAYSIZE];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">fileRead</span><span class="params">(FILE *fp)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">countNeighbour</span><span class="params">(<span class="keyword">int</span> count, <span class="keyword">double</span> distance)</span></span>;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">showResult</span><span class="params">(<span class="keyword">int</span> count, <span class="keyword">int</span> k)</span></span>;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">	LARGE_INTEGER m_nFreq;</div><div class="line">	LARGE_INTEGER m_nBeginTime;</div><div class="line">	LARGE_INTEGER m_nEndTime;</div><div class="line"></div><div class="line">	QueryPerformanceFrequency(&amp;m_nFreq);</div><div class="line">	QueryPerformanceCounter(&amp;m_nBeginTime);</div><div class="line"></div><div class="line">	FILE * fp = fopen(<span class="string">"1.bin"</span>, <span class="string">"rb"</span>);</div><div class="line">	<span class="keyword">if</span> (fp == <span class="literal">NULL</span>) &#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"FILE OPEN ERROR!\n"</span>);</div><div class="line">		<span class="built_in">exit</span>(<span class="number">1</span>);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	<span class="keyword">int</span> k=<span class="number">10</span>;</div><div class="line">	<span class="keyword">double</span> distance=<span class="number">7500</span>;</div><div class="line">	<span class="comment">//printf("请输入k和距离：");</span></div><div class="line">	<span class="comment">//scanf("%d%lf", &amp;k, &amp;distance);</span></div><div class="line"></div><div class="line">	<span class="keyword">int</span> count = fileRead(fp);</div><div class="line">	countNeighbour(count, distance);</div><div class="line">	showResult(count, k);</div><div class="line"></div><div class="line">	fclose(fp);</div><div class="line"></div><div class="line">	QueryPerformanceCounter(&amp;m_nEndTime);</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"\nElapsed Time=%lf sec\n"</span>,(<span class="keyword">double</span>)(m_nEndTime.QuadPart-m_nBeginTime.QuadPart)/m_nFreq.QuadPart);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">fileRead</span><span class="params">(FILE *fp)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">int</span> num[<span class="number">4</span>];</div><div class="line">	<span class="keyword">int</span> count = <span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span> (fread(num, <span class="keyword">sizeof</span>(<span class="keyword">int</span>), <span class="number">4</span>, fp) &amp;&amp; count &lt; ARRAYSIZE) &#123;</div><div class="line">		points[count].initDot();</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; i++) &#123;</div><div class="line">			points[count].pos[i] = num[i];</div><div class="line">		&#125;</div><div class="line">		count++;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">return</span> count;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">countNeighbour</span><span class="params">(<span class="keyword">int</span> count, <span class="keyword">double</span> distance)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count - <span class="number">1</span>; i++) &#123;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; count; j++) &#123;</div><div class="line">			<span class="keyword">if</span> (<span class="built_in">sqrt</span>((<span class="keyword">double</span>)((points[i].pos[<span class="number">0</span>]-points[j].pos[<span class="number">0</span>])*(points[i].pos[<span class="number">0</span>]-points[j].pos[<span class="number">0</span>])</div><div class="line">            +(points[i].pos[<span class="number">1</span>] - points[j].pos[<span class="number">1</span>])*(points[i].pos[<span class="number">1</span>] - points[j].pos[<span class="number">1</span>]) </div><div class="line">            +(points[i].pos[<span class="number">2</span>] - points[j].pos[<span class="number">2</span>])*(points[i].pos[<span class="number">2</span>] - points[j].pos[<span class="number">2</span>]) + </div><div class="line">            (points[i].pos[<span class="number">3</span>] - points[j].pos[<span class="number">3</span>])*(points[i].pos[<span class="number">3</span>] - points[j].pos[<span class="number">3</span>]))) &lt; distance) </div><div class="line">        &#123;</div><div class="line">				points[i].ngb++;</div><div class="line">				points[j].ngb++;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">showResult</span><span class="params">(<span class="keyword">int</span> count, <span class="keyword">int</span> k)</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">bool</span> flag = <span class="literal">true</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</div><div class="line">		<span class="keyword">if</span> (points[i].ngb == k) &#123;</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"第%d个点:(%d,%d,%d,%d)\n"</span>,i,points[i].pos[<span class="number">0</span>], points[i].pos[<span class="number">1</span>], points[i].pos[<span class="number">2</span>], </div><div class="line">            points[i].pos[<span class="number">3</span>]);</div><div class="line">			flag = <span class="literal">false</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span> (flag) &#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"没有符合要求的点。\n"</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C语言/" rel="tag"># C语言</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/10/保研/2009-2011年上机复试题/" rel="next" title="2009-2011年上机复试题">
+                <i class="fa fa-chevron-left"></i> 2009-2011年上机复试题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/12/保研/2016及2013复试上机/" rel="prev" title="2016及2013复试上机">
+                2016及2013复试上机 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="Mikito" />
+          <p class="site-author-name" itemprop="name">Mikito</p>
+           
+              <p class="site-description motion-element" itemprop="description">Computer Science</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">31</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#2012年上机题"><span class="nav-number">1.</span> <span class="nav-text">2012年上机题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目"><span class="nav-number">1.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析"><span class="nav-number">1.2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码"><span class="nav-number">1.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2013年上机题"><span class="nav-number">2.</span> <span class="nav-text">2013年上机题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析-1"><span class="nav-number">2.2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-1"><span class="nav-number">2.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2014年上机题"><span class="nav-number">3.</span> <span class="nav-text">2014年上机题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#分析-2"><span class="nav-number">3.2.</span> <span class="nav-text">分析</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码-2"><span class="nav-number">3.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Mikito</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
